@@ -1,6 +1,6 @@
 import "./App.css";
 import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
-import UseEnglish from "./Hooks/UseEnglish";
+import UseManageTexts from "./Hooks/UseManageTexts";
 import Notification from "./Components/Notification/Notification";
 import UseNotification from "./Hooks/UseNotification";
 import TextList from "./Components/TextList/TextList";
@@ -34,7 +34,7 @@ const App = () => {
         addText,
         delText,
         setNewText
-    } = UseEnglish(showNotification, navigate, start);
+    } = UseManageTexts(showNotification, navigate, start);
     const {
         inputText,
         inputName,

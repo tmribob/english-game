@@ -1,12 +1,20 @@
 .square {
-    width: 40px;
-    height: 40px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
     border-radius: 10px;
     border: #f0b286 3px solid;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: border 0.2s ease-in-out;
+}
+
+.divSquare {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .completed {

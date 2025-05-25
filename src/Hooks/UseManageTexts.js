@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import UseLocalStorage from "./UseLocalStorage";
 import StartTexts from "../StartTexts";
 
-const UseEnglish = (showNotification, navigate, start) => {
+const UseManageTexts = (showNotification, navigate, start) => {
     const [texts, setTexts] = useState([]);
     const [currentIndexText, setCurrentIndexText] = useState(null);
 
@@ -22,13 +22,16 @@ const UseEnglish = (showNotification, navigate, start) => {
 
     const delText = (index) => {
         setTexts(UseLocalStorage.remove('texts', index));
+        setCurrentIndexText(null);
     }
 
     const chooseText = (index) => {
         if (currentIndexText === index) {
-            setCurrentIndexText(null);
             const currentText = texts[index].text;
+            UseLocalStorage.save('text', currentText)
             start(currentText, currentText.map(sentence => shuffleArray(sentence)));
+            navigate('/play');
+            setCurrentIndexText(null);
         } else {
             setCurrentIndexText(index);
             setTexts(prevTexts => prevTexts.map((text, i) => ({...text, isChoose: i === index})));
@@ -46,12 +49,8 @@ const UseEnglish = (showNotification, navigate, start) => {
 
 
     return {
-        chooseText,
-        texts,
-        addText,
-        delText,
-        setNewText
+        chooseText, texts, addText, delText, setNewText
     }
 }
 
-export default UseEnglish;
+export default UseManageTexts;

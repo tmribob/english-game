@@ -1,5 +1,11 @@
 .isActive {
-    opacity: 0.5;
+    border-color: #6c3106;
+    text-decoration: line-through;
+    transition: all 0.3s ease;
+}
+
+.isActive:hover{
+    border-color: #f0b286;
 }
 
 .buttonList {
@@ -10,10 +16,9 @@
     border: #f0b286 solid 4px;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 7%;
     min-width: 50%;
 }
 
 .buttonList button {
-    min-width: 4rem;
+    min-width: 3em;
 }

@@ -26,13 +26,6 @@ const UseLocalStorage = {
         UseLocalStorage.save(item, texts.filter((text, i) => i !== index));
         return texts;
     },
-    removeItem: (item) => {
-        try {
-            localStorage.removeItem(item);
-        } catch (error) {
-            console.error('Ошибка удаления в localStorage:', error);
-        }
-    }
 };
 
 export default UseLocalStorage;

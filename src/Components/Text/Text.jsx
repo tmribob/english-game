@@ -3,9 +3,9 @@ import Button from "../Button/Button";
 import {RiDeleteBin2Line} from "react-icons/ri";
 
 const Text = ({name, chooseText, index, delText, isChoose}) => {
-    return (<li className={`${style.text} ${isChoose?style.isChoose:''}`} onClick={() => chooseText(index)}>
+    return (<li className={`${style.text} ${isChoose ? style.isChoose : ''}`} onClick={() => chooseText(index)}>
         {name}
-        <Button onClick={() => delText(index)} content={<RiDeleteBin2Line/>}/>
+        <Button onClick={() => delText(index)} с content={<RiDeleteBin2Line/>} height={"50%"}/>
     </li>);
 }
 

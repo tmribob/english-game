@@ -8,15 +8,13 @@ const UsePlay = (showNotification, navigate) => {
     const [progress, setProgress] = useState([]);
 
     const start = (currentText, shuffledText) => {
-        navigate('/play')
         setCurrentIndex(0);
         setButtons(shuffledText.map((sentence) => sentence.map((word, index) => ({
-            word, isActive: false, key: index
+            word, isActive: false, key: `${currentIndex}-${word}-${index}`
         }))));
         setText(currentText);
         setSpans(currentText.map(() => []));
         setProgress(currentText.map(() => "uncompleted"));
-
     }
 
     const changeButton = (key) => {
@@ -25,7 +23,7 @@ const UsePlay = (showNotification, navigate) => {
             if (index !== currentIndex) {
                 return sentence;
             } else if (currentButton.isActive) {
-                return sentence.filter((span) => span.key !== currentButton.key);
+                return sentence.map(span => ({...span, color: null})).filter((span) => span.key !== currentButton.key);
             }
             return [...sentence, {word: currentButton.word, key: currentButton.key}];
 
@@ -41,27 +39,31 @@ const UsePlay = (showNotification, navigate) => {
     const nextSentence = () => {
         const currentSentence = text[currentIndex];
         if (spans[currentIndex].length === currentSentence.length) {
+            setSpans(prevSpans => prevSpans.map((sentence, index) => index !== currentIndex ? sentence : sentence.map((value, index) => ({
+                ...value, color: value.word === currentSentence[index] ? "green" : "red"
+            }))));
             if (spans[currentIndex].some((span, index) => span.word !== currentSentence[index])) {
                 showNotification(`You made mistakes`);
-                setSpans(prevSpans => prevSpans.map((sentence, index) => {
-                    if (index !== currentIndex) {
-                        return sentence;
-                    }
-                    return sentence.map((value, index) => ({
-                        ...value, color: value.word === currentSentence[index] ? "green" : "red"
-                    }));
-                }));
             } else {
                 if (currentIndex === text.length - 1) {
-                    navigate('/home')
+                    endGame();
                 } else {
-                    setProgress(progress.map((value, index) => index === currentIndex ? "completed" : value));
+                    setProgress(prevProgress => prevProgress.map((value, index) => index === currentIndex ? "completed" : value));
                     setCurrentIndex(currentIndex + 1);
                 }
             }
         } else {
             showNotification("Not all the words were chosen ");
         }
+    }
+
+    const endGame = () => {
+        navigate('/home');
+        setProgress([]);
+        setButtons([]);
+        setCurrentIndex(0);
+        setSpans([]);
+        setText([]);
     }
 
     const changeSentence = (index) => {
@@ -81,16 +83,7 @@ const UsePlay = (showNotification, navigate) => {
         navigate('/home');
     }
     return ({
-        buttons,
-        spans,
-        changeButton,
-        clearSentence,
-        nextSentence,
-        progress,
-        goHome,
-        changeSentence,
-        currentIndex,
-        start
+        buttons, spans, changeButton, clearSentence, nextSentence, progress, goHome, changeSentence, currentIndex, start
     })
 }
 

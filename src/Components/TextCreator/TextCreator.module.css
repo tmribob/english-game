@@ -34,7 +34,3 @@
     display: flex;
     justify-content: space-evenly;
 }
-
-.operations .buttons {
-    width: calc(8px + 1em + 10em);
-}

@@ -1,0 +1,18 @@
+body {
+    background: #9e643a;
+    height: 100vh;
+    font-family: Arial, serif;
+    color: #6c3106;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#root {
+    height: 90%;
+    padding: 10vh 10% 0 10%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}

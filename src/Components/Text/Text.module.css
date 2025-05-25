@@ -1,0 +1,18 @@
+.text {
+    overflow-x: hidden;
+    height: 3em;
+    background: #f0b28679;
+    border-radius: 10px;
+    padding: 0 1.5em;
+    font-size: 1.5em;
+    width: calc(100% - 3em - 6px);
+    display: grid;
+    grid-template-columns: 1fr  auto;
+    align-items: center;
+    gap: 25px;
+    transition: border 0.3s ease;
+    border: #9e643a 3px solid;
+}
+.isChoose{
+    border-color: #f0b286;
+}

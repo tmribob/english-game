@@ -1,0 +1,27 @@
+.square {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: #f0b286 3px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.2s ease-in-out;
+}
+
+.completed {
+    border-color: #167316;
+}
+
+.current {
+    border-width: 5px;
+}
+
+.progressBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 100%;
+}

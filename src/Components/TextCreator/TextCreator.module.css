@@ -1,0 +1,40 @@
+.formInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5vh;
+    width: 100%;
+}
+
+.inputText {
+    /*overflow: hidden;*/
+    resize: none;
+    box-sizing: border-box;
+    width: 75%;
+    border: #f0b286 4px solid;
+    border-radius: 10px;
+    min-height: 50vh;
+    background: #9e643a;
+    padding: 1.5em;
+    font-size: 0.875em;
+    text-align: justify;
+}
+
+.inputText:focus {
+    outline: none;
+}
+
+.inputText::placeholder {
+    color: #f0b286;
+    font-size: 1.5em;
+}
+
+.operations {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.operations .buttons {
+    width: calc(8px + 1em + 10em);
+}

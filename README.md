@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# React pet project collection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ⚙️ Началом является клонирование репозитория
 
-## Available Scripts
+```
+    git clone https://github.com/tmribob/react-projects
+```
 
-In the project directory, you can run:
+```
+    cd react-projects
+```
 
-### `npm start`
+# 🚀 *Быстрый запуск*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Предварительные требования
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Для запуска без докера необходим установленный [Node.js](https://nodejs.org/)
 
-### `npm test`
+Для проверки установленного Node.js, воспользуйтесь следующие команды, которые выведут версии node и npm (
+устанавливается вместе с node.js):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+    node -v 
+   ```
 
-### `npm run build`
+```bash
+    npm -v
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Инструкция по запуску
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Установка зависимостей
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+    npm install
+```
 
-### `npm run eject`
+### Запуск проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+    npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 🛠 Запуск через docker
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## В случае установленного у вас docker
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Сборка
 
-## Learn More
+``` 
+    docker build -t react-projects .
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Запуск
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+``` 
+    docker run -p 3000:3000 react-projects
+```
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## [Если само не открылось нажать тут](http://localhost:3000)

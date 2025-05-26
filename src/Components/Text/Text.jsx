@@ -8,7 +8,7 @@ const Text = ({name, chooseText, index, delText, editText}) => {
         <div className={style.actions}>
             <Button theme={"lime"} onClick={() => editText(index)} content={<RiEdit2Line/>} padding={"4px 0 0 0"}
                     width={"40%"}/>
-            <Button theme={"magenta"} onClick={() => delText(index)} content={<RiDeleteBin2Line/>} padding={"4px 0 0 0"}
+            <Button theme={"magenta"} onClick={(event) => delText(index, event)} content={<RiDeleteBin2Line/>} padding={"4px 0 0 0"}
                     width={"40%"}/>
         </div>
 

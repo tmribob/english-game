@@ -30,7 +30,8 @@ const UseManageTexts = (showNotification, navigate) => {
         navigate('/addText');
     }
 
-    const delText = (index) => {
+    const delText = (index, event) => {
+        event.stopPropagation();
         setTexts(UseLocalStorage.remove('texts', index));
     }
 

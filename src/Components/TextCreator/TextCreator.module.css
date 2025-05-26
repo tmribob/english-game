@@ -2,28 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5vh;
+    gap: 5vh;
     width: 100%;
 }
 
 .inputText {
-    resize: none;
-    width: 75%;
-    border: none;
-    border-radius: 10px;
-    min-height: 50vh;
-    background-color: var(--lightBlue);
-    padding: 1.5em;
     font-size: 1em;
-    text-align: justify;
-}
-
-.inputText:focus {
-    outline: none;
+    font-weight: 600;
 }
 
 .inputText::placeholder {
-    color: var(--black);
     font-size: 1.5em;
 }
 

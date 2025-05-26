@@ -9,12 +9,12 @@
     grid-template-columns: 1fr  auto;
     align-items: center;
     gap: 1em;
-    transition: border 0.3s ease;
-    border: var(--blue) 0 solid;
+    transition: all 0.3s ease;
+    border: 0;
 }
 
 .text:hover {
-    border-width: 4px;
+    transform: scale(1.1,1.1);
 }
 
 .actions {

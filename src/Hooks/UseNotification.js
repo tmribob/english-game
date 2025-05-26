@@ -7,7 +7,7 @@ const UseNotification = () => {
         let timer;
         if (notification.isVisible) {
             timer = setTimeout(() => {
-                setNotification(prev => ({...prev, isVisible: false}));
+                setNotification(prev => ({text: prev.text, isVisible: false}))
             }, 3000);
         }
         return () => clearTimeout(timer);

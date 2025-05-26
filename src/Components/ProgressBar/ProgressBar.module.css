@@ -15,7 +15,7 @@
     border-color: var(--magent);
 }
 
-.square:hover:not(.current , .completed) {
+.square:hover:not(.current):not(.completed) {
     border-color: var(--blue);
 }
 

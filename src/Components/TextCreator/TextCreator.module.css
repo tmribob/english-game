@@ -12,7 +12,7 @@
     border: none;
     border-radius: 10px;
     min-height: 50vh;
-    background: var(--lightBlue);
+    background-color: var(--lightBlue);
     padding: 1.5em;
     font-size: 1em;
     text-align: justify;

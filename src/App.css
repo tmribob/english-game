@@ -1,5 +1,5 @@
 body {
-    background: var(--grey);
+    background-color: var(--grey);
     height: 100vh;
     font-family: Arial, serif;
     color: var(--white);

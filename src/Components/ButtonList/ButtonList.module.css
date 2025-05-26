@@ -1,11 +1,13 @@
 .isActive {
     text-decoration: line-through;
     opacity: 0.7;
+    color: var(--black);
 }
 
 .isActive:hover {
     opacity: 1;
     text-decoration: none;
+    color: var(--white);
 }
 
 .buttonList {

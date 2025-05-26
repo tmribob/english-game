@@ -6,7 +6,7 @@ const ButtonList = ({array, changeButton}) => {
         {array && array.map((value) => (<Button addClass={value.isActive ? style.isActive : ""}
                                                 key={value.key}
                                                 width={"auto"}
-                                                color={"blue"}
+                                                theme={"blue"}
                                                 onClick={() => changeButton(value.key)}
                                                 content={value.word}/>))}
     </div>);

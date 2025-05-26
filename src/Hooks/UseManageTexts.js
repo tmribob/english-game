@@ -28,7 +28,6 @@ const UseManageTexts = (showNotification, navigate, start) => {
     const chooseText = (index) => {
         if (currentIndexText === index) {
             const currentText = texts[index].text;
-            UseLocalStorage.save('text', currentText)
             start(currentText, currentText.map(sentence => shuffleArray(sentence)));
             navigate('/play');
             setCurrentIndexText(null);

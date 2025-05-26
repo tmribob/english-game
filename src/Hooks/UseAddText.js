@@ -34,7 +34,7 @@ const UseAddText = (navigate, showNotification, setNewText) => {
     const changeInputName = (e) => {
         const name = e.target.value;
         if (name.length <= 35) {
-            setInputName(name);
+            setInputName(name.length === 1 ? name.toUpperCase() : name);
         } else {
             showNotification("Name is too long!");
         }

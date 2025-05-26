@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const UsePlay = (showNotification, navigate) => {
     const [text, setText] = useState([]);
@@ -6,6 +6,14 @@ const UsePlay = (showNotification, navigate) => {
     const [buttons, setButtons] = useState([]);
     const [spans, setSpans] = useState([]);
     const [progress, setProgress] = useState([]);
+
+    useEffect(() => {
+        if (spans.length > 0) {
+            if (spans[currentIndex].some((span, index) => span.word !== text[currentIndex][index])) {
+                setProgress(prevProgress => prevProgress.map((value, index) => index === currentIndex ? "uncompleted" : value));
+            }
+        }
+    }, [spans]);
 
     const start = (currentText, shuffledText) => {
         setCurrentIndex(0);
@@ -17,8 +25,15 @@ const UsePlay = (showNotification, navigate) => {
         setProgress(currentText.map(() => "uncompleted"));
     }
 
+    const updateProgress = () => {
+        if (spans[currentIndex].some((span, index) => span.word !== text[currentIndex][index])) {
+            setProgress(prevProgress => prevProgress.map((value, index) => index === currentIndex ? "uncompleted" : value))
+        }
+    }
+
     const changeButton = (key) => {
         const currentButton = buttons[currentIndex].find(button => button.key === key);
+        updateProgress();
         setSpans(prevSpan => prevSpan.map((sentence, index) => {
             if (index !== currentIndex) {
                 return sentence;

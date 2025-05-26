@@ -9,7 +9,7 @@ const UseManageTexts = (showNotification, navigate, start) => {
 
     useEffect(() => {
         const texts = UseLocalStorage.get('texts');
-        setTexts(texts ? texts : StartTexts);
+        setTexts(texts.length > 0 ? texts : StartTexts);
     }, []);
 
     const setNewText = (newText) => {

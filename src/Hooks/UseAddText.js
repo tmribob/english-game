@@ -12,11 +12,11 @@ const UseAddText = (navigate, showNotification, setNewText) => {
 
     const confirmText = () => {
         if (!inputText.trim()) {
-            showNotification("Text is not stated");
+            showNotification("Text is not stated!");
             return;
         }
         if (!inputName.trim()) {
-            showNotification("Name is not stated");
+            showNotification("Name is not stated!");
             return;
         }
         setNewText({text: splitText(inputText), name: inputName})
@@ -36,7 +36,7 @@ const UseAddText = (navigate, showNotification, setNewText) => {
         if (name.length <= 35) {
             setInputName(name);
         } else {
-            showNotification("Name is so long");
+            showNotification("Name is too long!");
         }
     }
     const cancel = () => {

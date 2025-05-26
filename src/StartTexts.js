@@ -1,5 +1,5 @@
 const StartTexts = [{
-    name: "GLOBAL CLIMATE CHANGES",
+    name: "Global climate changes",
     text: [
         ['Today', 'our', 'planet', 'is', 'in', 'serious', 'danger'],
         ['Ozone', 'layer', 'depletion', 'extinction', 'of', 'animals', 'and', 'plants', 'air', 'and', 'water', 'pollution', 'deforestation', 'are', 'the', 'problems', 'that', 'threaten', 'our', 'life', 'on', 'the', 'Earth'],
@@ -17,7 +17,7 @@ const StartTexts = [{
         ['Nowadays', 'we', 'have', 'the', 'time', 'the', 'money', 'and', 'even', 'the', 'technology', 'to', 'prevent', 'a', 'disaster'],
         ['But', 'we', 'should', 'always', 'remember', 'that', 'the', 'longer', 'action', 'is', 'delayed', 'the', 'more', 'drastic', 'it', 'will', 'need', 'to', 'be']]
 }, {
-    name: "MOSCOW`S ENVIRONMENTAL PROBLEMS",
+    name: "Moscow`s environmental problems",
     text: [
         ['The', 'development', 'of', 'Moscow', 'is', 'associated', 'with', 'high', 'density', 'housing', 'intensive', 'development', 'of', 'the', 'suburbs', 'rapid', 'expansion', 'and', 'modernization', 'of', 'transport', 'networks', 'and', 'road', 'infrastructure', 'etc'],
         ['All', 'this', 'contributes', 'to', 'the', 'huge', 'impact', 'on', 'the', 'city`s', 'natural', 'systems', 'causing', 'significant', 'changes', 'in', 'their', 'structure', 'and', 'the', 'emergence', 'of', 'hazards', 'detrimental', 'to', 'the', 'population'],
@@ -30,7 +30,7 @@ const StartTexts = [{
         ['Nowadays', 'this', 'task', 'is', 'technically', 'and', 'technologically', 'feasible', 'and', 'could', 'be', 'achieved', 'by', 'the', 'use', 'of', 'renewable', 'energy', 'sources', 'and', 'non', 'waste', 'technologies', 'construction', 'of', 'waste', 'recycling', 'plants', 'and', 'sewage', 'treatment', 'facilities', 'as', 'well', 'as', 'transition', 'to', 'electric', 'transport']
     ]
 }, {
-    name: "TECHNOLOGICALLY DRIVEN GLOBAL CHALLENGES AND RISKS",
+    name: "Technologically driven global challenges and risk",
     text: [
         ['In', 'today`s', 'interconnected', 'world', 'technological', 'advancements', 'have', 'brought', 'numerous', 'benefits', 'especially', 'in', 'the', 'context', 'of', 'globalization'],
         ['Access', 'to', 'technology', 'is', 'now', 'crucial', 'for', 'participation', 'in', 'the', 'global', 'economy', 'education', 'and', 'innovation'],

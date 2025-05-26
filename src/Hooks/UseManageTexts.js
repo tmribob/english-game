@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import UseLocalStorage from "./UseLocalStorage";
 import StartTexts from "../StartTexts";
+import {useLocation} from 'react-router-dom'
 
 const UseManageTexts = (showNotification, navigate) => {
     const location = useLocation();
@@ -16,9 +17,14 @@ const UseManageTexts = (showNotification, navigate) => {
         }
     }, []);
 
-    const setNewText = (newText) => {
-        setTexts(UseLocalStorage.add('texts', newText));
-    }
+    useEffect(() => {
+        console.log(location)
+        if (location.pathname === "/home") {
+            if (location.state) {
+                setTexts(UseLocalStorage.add('texts', location.state));
+            }
+        }
+    }, [location.pathname]);
 
     const addText = () => {
         navigate('/addText');

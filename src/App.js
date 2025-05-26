@@ -39,7 +39,7 @@ const App = () => {
         inputName,
         confirmText,
         cancel
-    } = UseAddText(navigate, showNotification, setNewText);
+    } = UseAddText(navigate, showNotification);
     return (
         <>
             <Notification isVisible={notification.isVisible} context={notification.text}/>

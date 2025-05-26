@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const UseAddText = (navigate, showNotification, setNewText) => {
+const UseAddText = (navigate, showNotification) => {
     const [inputText, setInputText] = useState("");
     const [inputName, setInputName] = useState("");
 
@@ -19,9 +19,13 @@ const UseAddText = (navigate, showNotification, setNewText) => {
             showNotification("Name is not stated!");
             return;
         }
-        setNewText({text: splitText(inputText), name: inputName})
+        navigate('/home', {
+            state: {
+                text: splitText(inputText),
+                name: inputName
+            }
+        });
         clearInputs();
-        navigate('/home');
     }
     const splitText = (input) => {
         const sentences = input.split(/[.!?]\s*/).filter(sentence => sentence.trim());

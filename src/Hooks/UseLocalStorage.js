@@ -19,18 +19,17 @@ const UseLocalStorage = {
         const texts = UseLocalStorage.get(item);
         texts.push(newText);
         UseLocalStorage.save(item, texts);
-        return texts;
+        return UseLocalStorage.get(item);
     },
     remove: (item, index) => {
         const texts = UseLocalStorage.get(item);
-        const newTexts = texts.filter((text, i) => i !== index);
-        UseLocalStorage.save(item, newTexts);
-        return newTexts;
+        UseLocalStorage.save(item, texts.filter((text, i) => i !== index));
+        return UseLocalStorage.get(item);
     },
     update: (item, index, newText) => {
         const texts = UseLocalStorage.get(item);
         UseLocalStorage.save(item, texts.map((text, i) => i === index ? newText : text));
-        return texts;
+        return UseLocalStorage.get(item);
     }
 };
 

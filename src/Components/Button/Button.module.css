@@ -1,19 +1,52 @@
-.button {
-    background: #9e643a;
-    border-radius: 10px;
-    border: #f0b286 4px solid;
-    padding: 0.5em;
-    transition: border 0.3s ease;
-    height: 100%;
-    width: 100%;
-}
-
-.button:hover {
-    border-color: #6c310680;
-}
-
 .divButton {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button {
+    border-radius: 10px;
+    border: var(--white) 0 solid;
+    padding: 0.5em;
+    transition: all 0.2s ease;
+    height: calc(100% - 4px);
+    width: calc(100% - 4px - 1em);
+    font-size: 1.1em;
+    min-width: 3em;
+    cursor: pointer;
+}
+
+.button:hover {
+    width: 100%;
+    height: 100%;
+}
+
+.magenta {
+    background-color: var(--magent);
+    color: var(--white);
+}
+
+.magenta:hover {
+    color: var(--black);
+    border-color: var(--magent);
+}
+
+.lime {
+    background-color: var(--lime);
+    color: var(--black);
+}
+
+.lime:hover {
+    color: var(--white);
+    border-color: var(--lime);
+}
+
+.blue {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.blue:hover {
+    color: var(--black);
+    border-color: var(--blue);
 }

@@ -1,8 +1,8 @@
 body {
-    background: #9e643a;
+    background: var(--grey);
     height: 100vh;
     font-family: Arial, serif;
-    color: #6c3106;
+    color: var(--white);
     font-weight: 700;
     font-size: 16px;
 }
@@ -15,4 +15,14 @@ body {
 * {
     padding: 0;
     margin: 0;
+}
+
+:root {
+    --blue: #0076fd;
+    --white: #fdfdfd;
+    --magent: #fc0093;
+    --lime: #c2f976;
+    --lightBlue: #d8e9fd;
+    --grey: #eceff5;
+    --black: #2f3336;
 }

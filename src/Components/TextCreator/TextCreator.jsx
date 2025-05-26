@@ -11,8 +11,8 @@ const TextCreator = ({inputText, inputName, confirmText, cancel}) => {
                   onChange={inputText.update}
                   placeholder={"Enter Text"}/>
         <div className={style.operations}>
-            <Button onClick={cancel} content={"Cancel"} width={"30%"}/>
-            <Button onClick={confirmText} content={"Add"} width={"30%"}/>
+            <Button color={"magenta"} onClick={cancel} content={"Cancel"} width={"30%"}/>
+            <Button color={"lime"} onClick={confirmText} content={"Add"} width={"30%"}/>
         </div>
     </form>);
 }

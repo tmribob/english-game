@@ -20,9 +20,9 @@ const PlayField = ({
         <ButtonList array={buttons[currentIndex]} changeButton={changeButton}/>
         <SpanList array={spans[currentIndex]} delSpan={changeButton}/>
         <div className={style.divOperations}>
-            <Button onClick={clearSentence} content={"Clear"} width={"25%"}/>
-            <Button onClick={goHome} content={"Home"} width={"25%"}/>
-            <Button onClick={nextSentence} content={"Submit"} width={"25%"}/>
+            <Button color={"magenta"} onClick={clearSentence} content={"Clear"} width={"25%"}/>
+            <Button color={"blue"} onClick={goHome} content={"Home"} width={"25%"}/>
+            <Button color={"lime"} onClick={nextSentence} content={"Submit"} width={"25%"}/>
         </div>
     </div>);
 };

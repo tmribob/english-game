@@ -3,21 +3,21 @@
     gap: 10px;
     padding: 3% 5%;
     border-radius: 10px;
-    border: #f0b286 solid 4px;
     justify-content: center;
     flex-wrap: wrap;
     min-height: 4vh;
     min-width: 50%;
-    font-weight: 800;
+    font-size: 1.1em;
 }
 
 .span {
-    color: #000000;
+    color: var(--black);
     transition: opacity 0.3s ease, color 0.6s ease;
 }
 
 .span:hover {
-    opacity: 0.5;
+    color: var(--magent);
+    transform: scaleX(1.1);
 }
 
 .isTrue {

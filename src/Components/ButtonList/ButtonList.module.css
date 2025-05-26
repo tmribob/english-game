@@ -1,11 +1,11 @@
 .isActive {
-    border-color: #6c3106;
     text-decoration: line-through;
-    transition: all 0.3s ease;
+    opacity: 0.7;
 }
 
-.isActive:hover{
-    border-color: #f0b286;
+.isActive:hover {
+    opacity: 1;
+    text-decoration: none;
 }
 
 .buttonList {
@@ -13,12 +13,17 @@
     gap: 10px;
     padding: 3% 5%;
     border-radius: 10px;
-    border: #f0b286 solid 4px;
     justify-content: center;
     flex-wrap: wrap;
     min-width: 50%;
+    background-color: var(--lightBlue);
 }
 
 .buttonList button {
-    min-width: 3em;
+    width: 100%;
+}
+
+.buttonList button:hover {
+    opacity: 0.9;
+    transform: scale(1.1, 1.1);
 }

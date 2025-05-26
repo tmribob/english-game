@@ -7,16 +7,14 @@
 }
 
 .inputText {
-    /*overflow: hidden;*/
     resize: none;
-    box-sizing: border-box;
     width: 75%;
-    border: #f0b286 4px solid;
+    border: none;
     border-radius: 10px;
     min-height: 50vh;
-    background: #9e643a;
+    background: var(--lightBlue);
     padding: 1.5em;
-    font-size: 0.875em;
+    font-size: 1em;
     text-align: justify;
 }
 
@@ -25,12 +23,12 @@
 }
 
 .inputText::placeholder {
-    color: #f0b286;
+    color: var(--black);
     font-size: 1.5em;
 }
 
 .operations {
-    width: 50%;
+    width: 60%;
     display: flex;
     justify-content: space-evenly;
 }

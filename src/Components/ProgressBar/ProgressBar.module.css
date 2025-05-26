@@ -2,11 +2,21 @@
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     border-radius: 10px;
-    border: #f0b286 3px solid;
+    border: var(--grey) 4px solid;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: border 0.2s ease-in-out;
+    color: var(--black);
+}
+
+.current {
+    border-width: 5px;
+    border-color: var(--magent);
+}
+
+.square:hover:not(.current , .completed) {
+    border-color: var(--blue);
 }
 
 .divSquare {
@@ -18,11 +28,7 @@
 }
 
 .completed {
-    border-color: #167316;
-}
-
-.current {
-    border-width: 5px;
+    border-color: var(--lime);
 }
 
 .progressBar {

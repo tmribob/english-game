@@ -11,12 +11,11 @@ const UsePlay = (showNotification, navigate) => {
     const [progress, setProgress] = useState([]);
 
     useEffect(() => {
-        console.log(location)
         if (location.pathname === "/play") {
             const {currentText, shuffledText} = location.state || UseLocalStorage.get('currentText');
             start(currentText, shuffledText)
         }
-    }, [location.pathname]);
+    }, [location]);
 
     useEffect(() => {
         if (spans.length > 0) {

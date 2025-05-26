@@ -18,13 +18,17 @@ const UseManageTexts = (showNotification, navigate) => {
     }, []);
 
     useEffect(() => {
-        console.log(location)
-        if (location.pathname === "/home") {
-            if (location.state) {
-                setTexts(UseLocalStorage.add('texts', location.state));
+        if (location.pathname === "/home" && location.state) {
+            if ("newText" in location.state) {
+                setTexts(UseLocalStorage.add('texts', location.state.newText));
+                navigate(location.pathname, {replace: true, state: {}})
+            } else if ("editedText" in location.state) {
+                setTexts(UseLocalStorage.update("texts", location.state.editedText.index, location.state.editedText.text))
+                navigate(location.pathname, {replace: true, state: {}})
+
             }
         }
-    }, [location.pathname]);
+    }, [location]);
 
     const addText = () => {
         navigate('/addText');
@@ -53,9 +57,18 @@ const UseManageTexts = (showNotification, navigate) => {
         return newArray;
     }
 
+    const editText = (index, event) => {
+        event.stopPropagation();
+        navigate('/editText', {
+            state: {
+                array: texts[index],
+                index
+            }
+        })
+    }
 
     return {
-        chooseText, texts, addText, delText, setNewText
+        chooseText, texts, addText, delText, editText
     }
 }
 

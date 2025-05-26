@@ -8,6 +8,8 @@ import TextCreator from "./Components/TextCreator/TextCreator";
 import PlayField from "./Components/PlayField/PlayField";
 import UseAddText from "./Hooks/UseAddText";
 import UsePlay from "./Hooks/UsePlay";
+import TextEditor from "./Components/TextEditor/TextEditor";
+import UseEditing from "./Hooks/UseEditing";
 
 
 const App = () => {
@@ -38,8 +40,14 @@ const App = () => {
         inputText,
         inputName,
         confirmText,
-        cancel
+        cancel,
+        splitText
     } = UseAddText(navigate, showNotification);
+    const {
+        inputNameEditing,
+        editingSentence,
+        confirmEditing
+    } = UseEditing(navigate, splitText);
     return (
         <>
             <Notification isVisible={notification.isVisible} context={notification.text}/>
@@ -48,7 +56,8 @@ const App = () => {
                 <Route path={'/home'} element={<TextList texts={texts}
                                                          chooseText={chooseText}
                                                          addText={addText}
-                                                         delText={delText}/>}/>
+                                                         delText={delText}
+                                                         editText={editText}/>}/>
                 <Route path={'/addText'} element={<TextCreator inputText={inputText}
                                                                inputName={inputName}
                                                                confirmText={confirmText}
@@ -62,6 +71,11 @@ const App = () => {
                                                          goHome={goHome}
                                                          currentIndex={currentIndex}
                                                          changeSentence={changeSentence}/>}/>
+                <Route path={'/editText'} element={<TextEditor editingSentence={editingSentence.array}
+                                                               inputNameEditing={inputNameEditing}
+                                                               cancel={cancel}
+                                                               changeSentence={editingSentence.update}
+                                                               confirmEditing={confirmEditing}/>}/>
             </Routes>
         </>
     );

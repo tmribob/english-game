@@ -21,14 +21,17 @@ const UseAddText = (navigate, showNotification) => {
         }
         navigate('/home', {
             state: {
-                text: splitText(inputText),
-                name: inputName
+                newText: {
+                    text: splitText(inputText),
+                    name: inputName
+                },
+                isAdded: false
             }
         });
         clearInputs();
     }
-    const splitText = (input) => {
-        const sentences = input.split(/[.!?]\s*/).filter(sentence => sentence.trim());
+    const splitText = (text) => {
+        const sentences = text.split(/[.!?]\s*/).filter(sentence => sentence.trim());
         return sentences.map(sentence => sentence.match(/[а-яА-ЯёЁa-zA-Z0-9]+(?:['-`][а-яА-ЯёЁa-zA-Z0-9]+ | ,)*/g));
     }
     const changeInputText = (e) => {
@@ -51,7 +54,7 @@ const UseAddText = (navigate, showNotification) => {
         inputText: {text: inputText, update: changeInputText},
         inputName: {name: inputName, update: changeInputName},
         confirmText,
-        cancel
+        cancel, splitText
     });
 };
 

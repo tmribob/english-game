@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
+import UseLocalStorage from "./UseLocalStorage";
 
 const UsePlay = (showNotification, navigate) => {
+    const location = useLocation();
     const [text, setText] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [buttons, setButtons] = useState([]);
@@ -8,10 +11,16 @@ const UsePlay = (showNotification, navigate) => {
     const [progress, setProgress] = useState([]);
 
     useEffect(() => {
+        console.log(location)
+        if (location.pathname === "/play") {
+            const {currentText, shuffledText} = location.state || UseLocalStorage.get('currentText');
+            start(currentText, shuffledText)
+        }
+    }, [location.pathname]);
+
+    useEffect(() => {
         if (spans.length > 0) {
-            if (spans[currentIndex].some((span, index) => span.word !== text[currentIndex][index])) {
-                setProgress(prevProgress => prevProgress.map((value, index) => index === currentIndex ? "uncompleted" : value));
-            }
+            updateProgress();
         }
     }, [spans]);
 
@@ -23,6 +32,7 @@ const UsePlay = (showNotification, navigate) => {
         setText(currentText);
         setSpans(currentText.map(() => []));
         setProgress(currentText.map(() => "uncompleted"));
+        UseLocalStorage.save('currentText', {currentText, shuffledText})
     }
 
     const updateProgress = () => {

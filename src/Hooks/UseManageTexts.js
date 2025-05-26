@@ -2,14 +2,18 @@ import {useEffect, useState} from "react";
 import UseLocalStorage from "./UseLocalStorage";
 import StartTexts from "../StartTexts";
 
-const UseManageTexts = (showNotification, navigate, start) => {
+const UseManageTexts = (showNotification, navigate) => {
+    const location = useLocation();
     const [texts, setTexts] = useState([]);
-    const [currentIndexText, setCurrentIndexText] = useState(null);
-
 
     useEffect(() => {
-        const texts = UseLocalStorage.get('texts');
-        setTexts(texts.length > 0 ? texts : StartTexts);
+        const texts = UseLocalStorage.get("texts");
+        if (texts.length > 0) {
+            setTexts(texts);
+        } else {
+            UseLocalStorage.save("texts", StartTexts)
+            setTexts(StartTexts);
+        }
     }, []);
 
     const setNewText = (newText) => {
@@ -22,19 +26,15 @@ const UseManageTexts = (showNotification, navigate, start) => {
 
     const delText = (index) => {
         setTexts(UseLocalStorage.remove('texts', index));
-        setCurrentIndexText(null);
     }
 
     const chooseText = (index) => {
-        if (currentIndexText === index) {
-            const currentText = texts[index].text;
-            start(currentText, currentText.map(sentence => shuffleArray(sentence)));
-            navigate('/play');
-            setCurrentIndexText(null);
-        } else {
-            setCurrentIndexText(index);
-            setTexts(prevTexts => prevTexts.map((text, i) => ({...text, isChoose: i === index})));
-        }
+        navigate('/play', {
+            state: {
+                currentText: texts[index].text,
+                shuffledText: texts[index].text.map(sentence => shuffleArray(sentence))
+            }
+        });
     }
 
     const shuffleArray = (array) => {

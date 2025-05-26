@@ -23,9 +23,15 @@ const UseLocalStorage = {
     },
     remove: (item, index) => {
         const texts = UseLocalStorage.get(item);
-        UseLocalStorage.save(item, texts.filter((text, i) => i !== index));
-        return texts;
+        const newTexts = texts.filter((text, i) => i !== index);
+        UseLocalStorage.save(item, newTexts);
+        return newTexts;
     },
+    update: (item, index, newText) => {
+        const texts = UseLocalStorage.get(item);
+        UseLocalStorage.save(item, texts.map((text, i) => i === index ? newText : text));
+        return texts;
+    }
 };
 
 export default UseLocalStorage;

@@ -14,7 +14,7 @@ const UseNotification = () => {
     }, [notification.isVisible]);
 
     const showNotification = (content) => {
-        setNotification({text:content,isVisible: true});
+        setNotification({text: content, isVisible: true});
 
     }
     return {notification, showNotification}

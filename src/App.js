@@ -25,16 +25,15 @@ const App = () => {
         progress,
         goHome,
         changeSentence,
-        currentIndex,
-        start
+        currentIndex
     } = UsePlay(showNotification, navigate);
     const {
         chooseText,
         texts,
         addText,
         delText,
-        setNewText
-    } = UseManageTexts(showNotification, navigate, start);
+        editText
+    } = UseManageTexts(showNotification, navigate);
     const {
         inputText,
         inputName,

@@ -3,7 +3,7 @@
 ## ⚙️ Началом является клонирование репозитория
 
 ```
-    git clone https://github.com/tmribob/english-game
+    git clone https://github.com/tmribob/english-game.git
 ```
 
 ```

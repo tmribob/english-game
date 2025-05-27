@@ -1,5 +1,5 @@
 import "./App.css";
-import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import UseManageTexts from "./Hooks/UseManageTexts";
 import Notification from "./Components/Notification/Notification";
 import UseNotification from "./Hooks/UseNotification";
@@ -10,10 +10,12 @@ import UseAddText from "./Hooks/UseAddText";
 import UsePlay from "./Hooks/UsePlay";
 import TextEditor from "./Components/TextEditor/TextEditor";
 import UseEditing from "./Hooks/UseEditing";
+import EndPage from "./Components/EndPage/EndPage";
 
 
 const App = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const {
         notification,
         showNotification
@@ -28,14 +30,14 @@ const App = () => {
         goHome,
         changeSentence,
         currentIndex
-    } = UsePlay(showNotification, navigate);
+    } = UsePlay(showNotification, navigate, location);
     const {
         chooseText,
         texts,
         addText,
         delText,
         editText
-    } = UseManageTexts(showNotification, navigate);
+    } = UseManageTexts(showNotification, navigate, location);
     const {
         inputText,
         inputName,
@@ -47,7 +49,7 @@ const App = () => {
         inputNameEditing,
         editingSentence,
         confirmEditing
-    } = UseEditing(navigate, splitText);
+    } = UseEditing(navigate, splitText, location);
     return (
         <>
             <Notification isVisible={notification.isVisible} context={notification.text}/>
@@ -76,6 +78,7 @@ const App = () => {
                                                                cancel={cancel}
                                                                changeSentence={editingSentence.update}
                                                                confirmEditing={confirmEditing}/>}/>
+                <Route path={'/end'} element={<EndPage goHome={goHome} />}/>
             </Routes>
         </>
     );

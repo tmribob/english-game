@@ -83,13 +83,13 @@
 ### Сборка
 
 ``` 
-    docker build -t react-projects .
+    docker build -t english-game .
 ```
 
 ### Запуск
 
 ``` 
-    docker run -p 3000:3000 react-projects
+    docker run -p 3000:3000 english-game
 ```
 
 ## [Если само не открылось нажать тут](http://localhost:3000)

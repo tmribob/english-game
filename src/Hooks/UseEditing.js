@@ -1,8 +1,6 @@
 import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
 
-const UseEditing = (navigate, splitText) => {
-    const location = useLocation();
+const UseEditing = (navigate, splitText,location) => {
     const [originalIndex, setOriginalIndex] = useState(null);
     const [inputName, setInputName] = useState('');
     const [inputSentences, setInputSentences] = useState([]);

@@ -1,9 +1,7 @@
 import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
 import UseLocalStorage from "./UseLocalStorage";
 
-const UsePlay = (showNotification, navigate) => {
-    const location = useLocation();
+const UsePlay = (showNotification, navigate, location) => {
     const [text, setText] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [buttons, setButtons] = useState([]);
@@ -13,6 +11,7 @@ const UsePlay = (showNotification, navigate) => {
     useEffect(() => {
         if (location.pathname === "/play") {
             const {currentText, shuffledText} = location.state || UseLocalStorage.get('currentText');
+            setText(currentText);
             start(currentText, shuffledText)
         }
     }, [location]);
@@ -28,7 +27,6 @@ const UsePlay = (showNotification, navigate) => {
         setButtons(shuffledText.map((sentence) => sentence.map((word, index) => ({
             word, isActive: false, key: `${currentIndex}-${word}-${index}`
         }))));
-        setText(currentText);
         setSpans(currentText.map(() => []));
         setProgress(currentText.map(() => "uncompleted"));
         UseLocalStorage.save('currentText', {currentText, shuffledText})
@@ -82,12 +80,24 @@ const UsePlay = (showNotification, navigate) => {
     }
 
     const endGame = () => {
-        navigate('/home');
-        setProgress([]);
-        setButtons([]);
-        setCurrentIndex(0);
-        setSpans([]);
-        setText([]);
+        if (!spans.some((sentence, index) => {
+            if (sentence.length === text[index].length) {
+                return sentence.some((span, indexSpan) => span.word !== text[index][indexSpan]);
+            }
+            return true;
+
+        })) {
+            navigate('/end', {
+                state: {
+                    mistakes
+                }
+            });
+            setProgress([]);
+            setButtons([]);
+            setCurrentIndex(0);
+            setSpans([]);
+            setText([]);
+        }
     }
 
     const changeSentence = (index) => {

@@ -1,10 +1,8 @@
 import {useEffect, useState} from "react";
 import UseLocalStorage from "./UseLocalStorage";
 import StartTexts from "../StartTexts";
-import {useLocation} from 'react-router-dom'
 
-const UseManageTexts = (showNotification, navigate) => {
-    const location = useLocation();
+const UseManageTexts = (showNotification, navigate,location) => {
     const [texts, setTexts] = useState([]);
 
     useEffect(() => {

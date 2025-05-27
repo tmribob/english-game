@@ -10,6 +10,7 @@ import UseAddText from "./Hooks/UseAddText";
 import UsePlay from "./Hooks/UsePlay";
 import TextEditor from "./Components/TextEditor/TextEditor";
 import UseEditing from "./Hooks/UseEditing";
+import UseFinale from "./Hooks/UseFinale";
 import EndPage from "./Components/EndPage/EndPage";
 
 

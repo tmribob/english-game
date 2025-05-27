@@ -87,11 +87,7 @@ const UsePlay = (showNotification, navigate, location) => {
             return true;
 
         })) {
-            navigate('/end', {
-                state: {
-                    mistakes
-                }
-            });
+            navigate('/end');
             setProgress([]);
             setButtons([]);
             setCurrentIndex(0);

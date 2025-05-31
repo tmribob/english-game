@@ -11,79 +11,12 @@ import UsePlay from "./Hooks/UsePlay";
 import TextEditor from "./Components/TextEditor/TextEditor";
 import UseEditing from "./Hooks/UseEditing";
 import EndPage from "./Components/EndPage/EndPage";
+import useFinale from "./Hooks/UseFinale";
 import Header from "./Components/Header/Header";
 import UseMyNavigation from "./Hooks/UseMyNavigation";
 
 
 const App = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {
-        notification,
-        showNotification
-    } = UseNotification();
-    const {
-        buttons,
-        spans,
-        changeButton,
-        clearSentence,
-        submitSentence,
-        progress,
-        goHome,
-        changeSentence,
-        currentIndex
-    } = UsePlay(showNotification, navigate, location);
-    const {
-        chooseText,
-        texts,
-        addText,
-        delText,
-        editText
-    } = UseManageTexts(showNotification, navigate, location);
-    const {
-        inputText,
-        inputName,
-        confirmText,
-        cancel,
-        splitText
-    } = UseAddText(navigate, showNotification);
-    const {
-        inputNameEditing,
-        editingSentence,
-        confirmEditing
-    } = UseEditing(navigate, splitText, location);
-    return (
-        <>
-            <Notification isVisible={notification.isVisible} context={notification.text}/>
-            <Routes>
-                <Route path={'/'} element={<Navigate to="/home" replace/>}/>
-                <Route path={'/home'} element={<TextList texts={texts}
-                                                         chooseText={chooseText}
-                                                         addText={addText}
-                                                         delText={delText}
-                                                         editText={editText}/>}/>
-                <Route path={'/addText'} element={<TextCreator inputText={inputText}
-                                                               inputName={inputName}
-                                                               confirmText={confirmText}
-                                                               cancel={cancel}/>}/>
-                <Route path={'play'} element={<PlayField buttons={buttons}
-                                                         spans={spans}
-                                                         changeButton={changeButton}
-                                                         clearSentence={clearSentence}
-                                                         submitSentence={submitSentence}
-                                                         progress={progress}
-                                                         goHome={goHome}
-                                                         currentIndex={currentIndex}
-                                                         changeSentence={changeSentence}/>}/>
-                <Route path={'/editText'} element={<TextEditor editingSentence={editingSentence.array}
-                                                               inputNameEditing={inputNameEditing}
-                                                               cancel={cancel}
-                                                               changeSentence={editingSentence.update}
-                                                               confirmEditing={confirmEditing}/>}/>
-                <Route path={'/end'} element={<EndPage goHome={goHome}/>}/>
-            </Routes>
-        </>
-    );
   const {location, setNewLocation, header} = UseMyNavigation();
   const {
     notification, showNotification
@@ -108,6 +41,7 @@ const App = () => {
   const {
     inputNameEditing, editingSentence, confirmEditing
   } = UseEditing(setNewLocation, splitText, location);
+  const {mistakes} = useFinale(location);
   return (<>
     <Notification
       isVisible={notification.isVisible}
@@ -169,6 +103,7 @@ const App = () => {
         path={'/end'}
         element={<EndPage
           goHome={goHome}
+          mistakes={mistakes}
         />}
       />
     </Routes>

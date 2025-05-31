@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
 import UseLocalStorage from "./UseLocalStorage";
 
-const UsePlay = (showNotification, navigate, location) => {
-    const [text, setText] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [buttons, setButtons] = useState([]);
-    const [spans, setSpans] = useState([]);
-    const [progress, setProgress] = useState([]);
+const UsePlay = (showNotification, setNewLocation, location) => {
+  const [text, setText] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [buttons, setButtons] = useState([]);
+  const [spans, setSpans] = useState([]);
+  const [progress, setProgress] = useState([]);
 
   useEffect(() => {
     if (location.pathname === "/play") {
@@ -56,28 +56,31 @@ const UsePlay = (showNotification, navigate, location) => {
           }) : button)));
   }
 
-    const submitSentence = () => {
-        const currentSentence = text[currentIndex];
-        if (spans[currentIndex].length !== currentSentence.length) {
-            showNotification("Not all the words were chosen ");
-            return;
-        }
-        setSpans(prevSpans => prevSpans.map((sentence, indexSentence) =>
-            indexSentence !== currentIndex ? sentence : sentence.map((span, indexSpan) => ({
-                ...span, color: span.word === currentSentence[indexSpan] ? "green" : "red"
-            }))));
-        if (spans[currentIndex].some((span, indexSpan) => span.word !== currentSentence[indexSpan])) {
-            showNotification(`You made mistakes`);
-            return;
-        }
-        if (progress.every(sentence => sentence === "finished")) {
-            endGame();
-        } else {
-            setProgress(prevProgress => prevProgress.map((sentence, indexSentence) =>
-                indexSentence === currentIndex ? "completed" : sentence));
-            setCurrentIndex(currentIndex + 1);
-        }
+  const submitSentence = () => {
+    const currentSentence = text[currentIndex];
+    if (spans[currentIndex].length !== currentSentence.length) {
+      showNotification("Not all the words were chosen ");
+      return;
     }
+    setSpans(prevSpans =>
+      prevSpans.map((sentence, indexSentence) =>
+        indexSentence !== currentIndex ? sentence : sentence.map((span, indexSpan) => ({
+          ...span,
+          color: span.word === currentSentence[indexSpan] ? "green" : "red"
+        }))));
+    if (spans[currentIndex].some((span, indexSpan) =>
+      span.word !== currentSentence[indexSpan])) {
+      showNotification(`You made mistakes`);
+      return;
+    }
+    setProgress(prevProgress =>
+      prevProgress.map((status, indexStatus) =>
+        indexStatus === currentIndex ? "finished" : status));
+    currentIndex < text.length - 1 && setCurrentIndex(currentIndex + 1);
+    if (progress.every(sentence => sentence === "finished")) {
+      endGame();
+    }
+  }
 
   const endGame = () => {
     if (spans.every((sentence, indexSentence) => {
@@ -109,21 +112,6 @@ const UsePlay = (showNotification, navigate, location) => {
       prevProgress.map((sentence, indexSentence) =>
         indexSentence === currentIndex ? "unfinished" : sentence));
 
-    }
-    const goHome = () => {
-        navigate('/home');
-        dismantling();
-    }
-    const dismantling = () => {
-        setProgress([]);
-        setButtons([]);
-        setCurrentIndex(0);
-        setSpans([]);
-        setText([]);
-    }
-    return ({
-        buttons, spans, changeButton, clearSentence, submitSentence, progress, goHome, changeSentence, currentIndex
-    })
   }
   const goHome = () => {
     setNewLocation('/home');

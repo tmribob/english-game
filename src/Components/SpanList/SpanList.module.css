@@ -1,29 +1,29 @@
 .spanList {
-    display: flex;
-    gap: 10px;
-    padding: 3% 5%;
-    border-radius: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    min-height: 4vh;
-    min-width: 50%;
-    font-size: 1.1em;
+  display: flex;
+  gap: 10px;
+  padding: 3% 5%;
+  border-radius: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 4vh;
+  min-width: 50%;
+  font-size: 1.1em;
 }
 
 .span {
-    color: var(--black);
-    transition: opacity 0.3s ease, color 0.6s ease;
+  color: var(--black);
+  transition: opacity 0.3s ease, color 0.6s ease;
 }
 
 .span:hover {
-    color: var(--magent);
-    transform: scaleX(1.1);
+  color: var(--magent);
+  transform: scaleX(1.1);
 }
 
 .isTrue {
-    color: #167316;
+  color: #167316;
 }
 
 .isFalse {
-    color: #FF0000;
+  color: #FF0000;
 }

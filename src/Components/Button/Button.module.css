@@ -1,48 +1,48 @@
 .divButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
-    border-radius: 10px;
-    border:  0 ;
-    padding: 0.5em;
-    transition: all 0.2s ease;
-    height: 100%;
-    width: 100%;
-    font-size: 1.1em;
-    min-width: 2.5em;
-    cursor: pointer;
+  border-radius: 10px;
+  border: 0;
+  padding: 0.5em;
+  transition: all 0.2s ease;
+  height: 100%;
+  width: 100%;
+  font-size: 1.1em;
+  min-width: 2.5em;
+  cursor: pointer;
 }
 
 .button:hover {
-    transform: scale(1.2,1.1);
+  transform: scale(1.2, 1.1);
 }
 
 .magenta {
-    background-color: var(--magent);
-    color: var(--white);
+  background-color: var(--magent);
+  color: var(--white);
 }
 
 .magenta:hover {
-    color: var(--black);
+  color: var(--black);
 }
 
 .lime {
-    background-color: var(--lime);
-    color: var(--black);
+  background-color: var(--lime);
+  color: var(--black);
 }
 
 .lime:hover {
-    color: var(--white);
+  color: var(--white);
 }
 
 .blue {
-    background-color: var(--blue);
-    color: var(--white);
+  background-color: var(--blue);
+  color: var(--white);
 }
 
 .blue:hover {
-    color: var(--black);
+  color: var(--black);
 }

@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+.text {
+  text-align: center;
+  background-color: var(--lightBlue);
+  color: var(--black);
+  border-radius: 10px;
+  padding: 0.5em 1.5em;
+}

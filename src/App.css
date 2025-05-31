@@ -10,6 +10,8 @@ body {
 #root {
     height: 90%;
     padding: 10vh 10%;
+  height: 90%;
+  padding: 5vh 10%;
 }
 
 * {

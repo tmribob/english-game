@@ -1,12 +1,12 @@
 .textList {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    width: 70%;
-    padding: 0 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  width: 70%;
+  padding: 0 15%;
 }
 
 .addText {
-    font-size: 1.25em;
+  font-size: 1.25em;
 }

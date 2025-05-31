@@ -1,15 +1,15 @@
 .notification {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: var(--magent);
-    border-radius: 10px;
-    padding: 1em 1.5em;
-    max-width: 15vw;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: var(--magent);
+  border-radius: 10px;
+  padding: 1em 1.5em;
+  max-width: 15vw;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .notification.visibility {
-    opacity: 1;
+  opacity: 1;
 }

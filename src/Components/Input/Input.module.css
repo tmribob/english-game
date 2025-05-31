@@ -1,42 +1,42 @@
 .divInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputText {
-    border-radius: 10px;
-    padding: 0.5em;
-    transition: all 0.3s ease-in-out;
-    height: calc(100% - 1em);
-    width: calc(100% - 1em);
-    font-size: 1.25em;
-    border: 0;
-    resize: none;
+  border-radius: 10px;
+  padding: 0.5em;
+  transition: all 0.3s ease-in-out;
+  height: calc(100% - 1em);
+  width: calc(100% - 1em);
+  font-size: 1.25em;
+  border: 0;
+  resize: none;
 }
 
 .blue {
-    color: var(--white);
-    background-color: var(--blue);
+  color: var(--white);
+  background-color: var(--blue);
 }
 
 .blue::placeholder {
-    color: var(--white);
+  color: var(--white);
 }
 
 .blue:focus {
-    transform: scale(1.1, 1.2);
+  transform: scale(1.1, 1.2);
 }
 
 .lightBlue {
-    color: var(--black);
-    background-color: var(--lightBlue);
+  color: var(--black);
+  background-color: var(--lightBlue);
 }
 
 .lightBlue::placeholder {
-    color: var(--black);
+  color: var(--black);
 }
 
 .inputText:focus {
-    outline: none;
+  outline: none;
 }

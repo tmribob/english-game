@@ -25,7 +25,7 @@ const App = () => {
         spans,
         changeButton,
         clearSentence,
-        nextSentence,
+        submitSentence,
         progress,
         goHome,
         changeSentence,
@@ -68,7 +68,7 @@ const App = () => {
                                                          spans={spans}
                                                          changeButton={changeButton}
                                                          clearSentence={clearSentence}
-                                                         nextSentence={nextSentence}
+                                                         submitSentence={submitSentence}
                                                          progress={progress}
                                                          goHome={goHome}
                                                          currentIndex={currentIndex}
@@ -78,7 +78,7 @@ const App = () => {
                                                                cancel={cancel}
                                                                changeSentence={editingSentence.update}
                                                                confirmEditing={confirmEditing}/>}/>
-                <Route path={'/end'} element={<EndPage goHome={goHome} />}/>
+                <Route path={'/end'} element={<EndPage goHome={goHome}/>}/>
             </Routes>
         </>
     );

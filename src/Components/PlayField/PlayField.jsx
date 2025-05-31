@@ -9,7 +9,7 @@ const PlayField = ({
                        spans,
                        changeButton,
                        clearSentence,
-                       nextSentence,
+                       submitSentence,
                        progress,
                        goHome,
                        currentIndex,
@@ -22,7 +22,7 @@ const PlayField = ({
         <div className={style.divOperations}>
             <Button theme={"magenta"} onClick={clearSentence} content={"Clear"} width={"25%"}/>
             <Button theme={"blue"} onClick={goHome} content={"Home"} width={"25%"}/>
-            <Button theme={"lime"} onClick={nextSentence} content={"Submit"} width={"25%"}/>
+            <Button theme={"lime"} onClick={submitSentence} content={"Submit"} width={"25%"}/>
         </div>
     </div>);
 };

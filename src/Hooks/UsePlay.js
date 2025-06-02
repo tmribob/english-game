@@ -7,6 +7,7 @@ const UsePlay = (showNotification, setNewLocation, location) => {
   const [buttons, setButtons] = useState([]);
   const [spans, setSpans] = useState([]);
   const [progress, setProgress] = useState([]);
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     if (location.pathname === "/play") {
@@ -68,6 +69,8 @@ const UsePlay = (showNotification, setNewLocation, location) => {
           ...span,
           color: span.word === currentSentence[indexSpan] ? "green" : "red"
         }))));
+    setHistory(prevSentence =>
+      [...prevSentence, spans[currentIndex]]);
     if (spans[currentIndex].some((span, indexSpan) =>
       span.word !== currentSentence[indexSpan])) {
       showNotification(`You made mistakes`);
@@ -90,7 +93,10 @@ const UsePlay = (showNotification, setNewLocation, location) => {
       }
       return false;
     })) {
-      setNewLocation('/end');
+      setNewLocation('/end', {
+          mistakes: history
+        }
+      );
       dismantling();
     }
   }
@@ -123,6 +129,7 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     setCurrentIndex(0);
     setSpans([]);
     setText([]);
+    setHistory([]);
   }
   return ({
     buttons,

@@ -1,10 +1,10 @@
-import Button from "../Button/Button";
-import style from './PlayField.module.css'
-import ProgressBar from "../ProgressBar/ProgressBar";
-import ButtonList from "../ButtonList/ButtonList";
-import SpanList from "../SpanList/SpanList";
+import Button from "../../Components/Button/Button";
+import style from './PlayingPage.module.css'
+import ProgressBar from "../../Components/ProgressBar/ProgressBar";
+import ButtonList from "../../Components/ButtonList/ButtonList";
+import SpanList from "../../Components/SpanList/SpanList";
 
-const PlayField = ({
+const PlayingPage = ({
                      buttons,
                      spans,
                      changeButton,
@@ -52,4 +52,4 @@ const PlayField = ({
   </div>);
 };
 
-export default PlayField;
+export default PlayingPage;

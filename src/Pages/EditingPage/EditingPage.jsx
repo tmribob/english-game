@@ -1,9 +1,9 @@
-import style from "./TextEditor.module.css";
-import Input from "../Input/Input";
-import Button from "../Button/Button";
+import style from "./EditingPage.module.css";
+import Input from "../../Components/Input/Input";
+import Button from "../../Components/Button/Button";
 
 
-const TextEditor = ({
+const EditingPage = ({
                       editingSentence,
                       inputNameEditing,
                       cancel,
@@ -49,4 +49,4 @@ const TextEditor = ({
   </form>)
 }
 
-export default TextEditor;
+export default EditingPage;

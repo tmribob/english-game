@@ -1,9 +1,9 @@
-import style from "./TextList.module.css";
-import Button from "../Button/Button";
+import style from "./HomePage.module.css";
+import Button from "../../Components/Button/Button";
 import {RiMenuAddFill} from "react-icons/ri";
-import Text from "../Text/Text"
+import Text from "../../Components/Text/Text"
 
-const TextList = ({texts, chooseText, addText, delText, editText}) => {
+const HomePage = ({texts, chooseText, addText, delText, editText}) => {
   return (<ul className={style.textList}>
     {texts.map((value, index) => (<Text
       key={index}
@@ -23,4 +23,4 @@ const TextList = ({texts, chooseText, addText, delText, editText}) => {
   </ul>)
 }
 
-export default TextList;
+export default HomePage;

@@ -1,20 +1,26 @@
 import "./App.css";
 import {Navigate, Route, Routes} from "react-router-dom";
-import UseManageTexts from "./Hooks/UseManageTexts";
+
 import Notification from "./Components/Notification/Notification";
 import UseNotification from "./Hooks/UseNotification";
-import TextList from "./Components/TextList/TextList";
-import TextCreator from "./Components/TextCreator/TextCreator";
-import PlayField from "./Components/PlayField/PlayField";
+
+import HomePage from "./Pages/HomePage/HomePage";
+import UseManageTexts from "./Hooks/UseManageTexts";
+
+import CreationPage from "./Pages/CreationPage/CreationPage";
 import UseAddText from "./Hooks/UseAddText";
+
+import PlayingPage from "./Pages/PlayingPage/PlayingPage";
 import UsePlay from "./Hooks/UsePlay";
-import TextEditor from "./Components/TextEditor/TextEditor";
+
+import EditingPage from "./Pages/EditingPage/EditingPage";
 import UseEditing from "./Hooks/UseEditing";
-import EndPage from "./Components/EndPage/EndPage";
+
+import EndPage from "./Pages/EndPage/EndPage";
 import useFinale from "./Hooks/UseFinale";
+
 import Header from "./Components/Header/Header";
 import UseMyNavigation from "./Hooks/UseMyNavigation";
-
 
 const App = () => {
   const {location, setNewLocation, header} = UseMyNavigation();
@@ -58,7 +64,7 @@ const App = () => {
       />
       <Route
         path={'/home'}
-        element={<TextList
+        element={<HomePage
           texts={texts}
           chooseText={chooseText}
           addText={addText}
@@ -68,7 +74,7 @@ const App = () => {
       />
       <Route
         path={'/addText'}
-        element={<TextCreator
+        element={<CreationPage
           inputText={inputText}
           inputName={inputName}
           confirmText={confirmText}
@@ -77,7 +83,7 @@ const App = () => {
       />
       <Route
         path={'play'}
-        element={<PlayField
+        element={<PlayingPage
           buttons={buttons}
           spans={spans}
           changeButton={changeButton}
@@ -91,7 +97,7 @@ const App = () => {
       />
       <Route
         path={'/editText'}
-        element={<TextEditor
+        element={<EditingPage
           editingSentence={editingSentence.array}
           inputNameEditing={inputNameEditing}
           cancel={cancel}

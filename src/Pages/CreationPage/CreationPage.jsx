@@ -1,8 +1,8 @@
-import style from "./TextCreator.module.css";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import style from "./CreationPage.module.css";
+import Button from "../../Components/Button/Button";
+import Input from "../../Components/Input/Input";
 
-const TextCreator = ({inputText, inputName, confirmText, cancel}) => {
+const CreationPage = ({inputText, inputName, confirmText, cancel}) => {
   return (<form className={style.formInput}>
     <Input
       value={inputName.name}
@@ -42,4 +42,4 @@ const TextCreator = ({inputText, inputName, confirmText, cancel}) => {
   </form>);
 }
 
-export default TextCreator;
+export default CreationPage;

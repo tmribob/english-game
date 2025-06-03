@@ -1,6 +1,6 @@
 .square {
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
   border-radius: 10px;
   border: var(--grey) 4px solid;
   display: flex;
@@ -11,12 +11,17 @@
   cursor: pointer;
 }
 
+.completed {
+  border-color: var(--lime);
+}
+
 .current {
-  border-width: 5px;
+  border-width: 6px;
   border-color: var(--magent);
 }
 
-.square:hover:not(.current):not(.completed) {
+.square:hover:not(.current) {
+  border-width: 6px;
   border-color: var(--blue);
 }
 
@@ -26,10 +31,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.completed {
-  border-color: var(--lime);
 }
 
 .progressBar {

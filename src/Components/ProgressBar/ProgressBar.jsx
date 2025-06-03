@@ -7,7 +7,7 @@ const ProgressBar = ({progress, changeSentence, currentIndex}) => {
       key={index}
     >
       <li
-        className={`${style.square} ${currentIndex === index ? style.current : ""} ${value === "completed" ? style.completed : ""}`}
+        className={`${style.square} ${currentIndex === index ? style.current : ""} ${value === "finished" ? style.completed : ""}`}
         onClick={() => changeSentence(index)}
       >{index + 1}</li>
     </div>))}

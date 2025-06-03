@@ -1,0 +1,18 @@
+.mistakesList {
+  display: flex;
+  gap: 10px;
+  padding: 3% 5%;
+  border-radius: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 4vh;
+  min-width: 50%;
+}
+
+.isTrue {
+  color: #167316;
+}
+
+.isFalse {
+  color: #FF0000;
+}

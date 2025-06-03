@@ -12,7 +12,7 @@
 }
 
 .completed {
-  border-color: var(--lime);
+  border-color: var(--blue);
 }
 
 .current {
@@ -22,7 +22,7 @@
 
 .square:hover:not(.current) {
   border-width: 6px;
-  border-color: var(--blue);
+  border-color: var(--lightBlue);
 }
 
 .divSquare {

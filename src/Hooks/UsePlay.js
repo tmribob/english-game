@@ -58,46 +58,29 @@ const UsePlay = (showNotification, setNewLocation, location) => {
   }
 
   const submitSentence = () => {
-    const currentSentence = text[currentIndex];
-    if (spans[currentIndex].length !== currentSentence.length) {
-      showNotification("Not all the words were chosen ");
-      return;
-    }
+    const colorizedSpans = spans[currentIndex].map((span, indexSpan) => ({
+      ...span,
+      isRight: span.word === text[currentIndex][indexSpan]
+    }));
+    setHistory(prevSentence => [...prevSentence, colorizedSpans]);
     setSpans(prevSpans =>
       prevSpans.map((sentence, indexSentence) =>
-        indexSentence !== currentIndex ? sentence : sentence.map((span, indexSpan) => ({
-          ...span,
-          color: span.word === currentSentence[indexSpan] ? "green" : "red"
-        }))));
-    setHistory(prevSentence =>
-      [...prevSentence, spans[currentIndex]]);
-    if (spans[currentIndex].some((span, indexSpan) =>
-      span.word !== currentSentence[indexSpan])) {
+        indexSentence === currentIndex ? colorizedSpans : sentence));
+    if (colorizedSpans.some(span => span.color === "red")) {
       showNotification(`You made mistakes`);
       return;
     }
     setProgress(prevProgress =>
       prevProgress.map((status, indexStatus) =>
         indexStatus === currentIndex ? "finished" : status));
-    currentIndex < text.length - 1 && setCurrentIndex(currentIndex + 1);
-    if (progress.every(sentence => sentence === "finished")) {
-      endGame();
-    }
-  }
-
-  const endGame = () => {
-    if (spans.every((sentence, indexSentence) => {
-      if (sentence.length === text[indexSentence].length) {
-        return sentence.every((span, indexSpan) =>
-          span.word === text[indexSentence][indexSpan]);
-      }
-      return false;
-    })) {
+    if (currentIndex === text.length - 1) {
       setNewLocation('/end', {
           mistakes: history
         }
       );
       dismantling();
+    } else {
+      setCurrentIndex(prevIndex => prevIndex + 1);
     }
   }
 

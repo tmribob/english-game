@@ -19,7 +19,7 @@ const UseManageTexts = (showNotification, setNewLocation, location) => {
     if (location.pathname === "/home" && location.state) {
       if ("newText" in location.state) {
         setTexts(UseLocalStorage.add('texts', location.state.newText));
-        setNewLocation(location.pathname,"ENGLISH GAME", {}, true)
+        setNewLocation(location.pathname, {}, true)
       } else if ("editedText" in location.state) {
         setTexts(UseLocalStorage.update("texts", location.state.editedText.index, location.state.editedText.text))
         setNewLocation(location.pathname, {}, true)

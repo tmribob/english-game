@@ -22,7 +22,7 @@ const UseAddText = (setNewLocation, showNotification) => {
     setNewLocation('/home', {
       newText: {
         text: splitText(inputText), name: inputName
-      }, isAdded: false
+      }
     });
     clearInputs();
   }

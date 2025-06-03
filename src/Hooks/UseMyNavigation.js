@@ -31,6 +31,7 @@ const UseMyNavigation = () => {
         break;
     }
   }, [location.pathname]);
+
   return {location, setNewLocation, header};
 }
 

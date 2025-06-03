@@ -17,7 +17,7 @@ const EditingPage = ({
       position={"center"}
       onChange={inputNameEditing.update}
       holder={"Enter text`s name"}
-      width={"50%"}
+      width={"60%"}
       height={"2.75em"}
       theme={"blue"}
     />

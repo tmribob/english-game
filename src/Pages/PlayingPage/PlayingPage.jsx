@@ -5,16 +5,16 @@ import ButtonList from "../../Components/ButtonList/ButtonList";
 import SpanList from "../../Components/SpanList/SpanList";
 
 const PlayingPage = ({
-                     buttons,
-                     spans,
-                     changeButton,
-                     clearSentence,
-                     submitSentence,
-                     progress,
-                     goHome,
-                     currentIndex,
-                     changeSentence
-                   }) => {
+                       buttons,
+                       spans,
+                       changeButton,
+                       clearSentence,
+                       submitSentence,
+                       progress,
+                       goHome,
+                       currentIndex,
+                       changeSentence
+                     }) => {
   return (<div className={style.playField}>
     <ProgressBar
       progress={progress}
@@ -45,7 +45,7 @@ const PlayingPage = ({
       <Button
         theme={"lime"}
         onClick={submitSentence}
-        content={"Submit"}
+        content={currentIndex === progress.length - 1 ? "Submit" : "Next"}
         width={"25%"}
       />
     </div>

@@ -9,7 +9,7 @@ const CreationPage = ({inputText, inputName, confirmText, cancel}) => {
       position={"center"}
       onChange={inputName.update}
       holder={"Enter text`s name"}
-      width={"50%"}
+      width={"60%"}
       height={"2.75em"}
       theme={"blue"}
       name={"name"}
@@ -17,7 +17,7 @@ const CreationPage = ({inputText, inputName, confirmText, cancel}) => {
     <Input
       addClass={style.inputText}
       position={"justify"}
-      width={"75%"}
+      width={"90%"}
       theme={"lightBlue"}
       value={inputText.text}
       onChange={inputText.update}

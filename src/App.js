@@ -42,10 +42,15 @@ const App = () => {
     chooseText, texts, addText, delText, editText
   } = UseManageTexts(showNotification, setNewLocation, location);
   const {
-    inputText, inputName, confirmText, cancel, splitText
+    inputText,
+    inputName,
+    confirmText, cancel, splitText
   } = UseAddText(setNewLocation, showNotification);
   const {
-    inputNameEditing, editingSentence, confirmEditing
+    inputNameEditing,
+    editingSentence,
+    confirmEditing,
+    addNewSentence
   } = UseEditing(setNewLocation, splitText, location);
   const {mistakes} = useFinale(location);
   return (<>
@@ -103,6 +108,7 @@ const App = () => {
           cancel={cancel}
           changeSentence={editingSentence.update}
           confirmEditing={confirmEditing}
+          addNewSentence={addNewSentence}
         />}
       />
       <Route

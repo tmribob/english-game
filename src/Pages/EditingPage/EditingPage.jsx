@@ -4,12 +4,13 @@ import Button from "../../Components/Button/Button";
 
 
 const EditingPage = ({
-                      editingSentence,
-                      inputNameEditing,
-                      cancel,
-                      confirmEditing,
-                      changeSentence
-                    }) => {
+                       editingSentence,
+                       inputNameEditing,
+                       cancel,
+                       confirmEditing,
+                       changeSentence,
+                       addNewSentence
+                     }) => {
   return (<form className={style.formInput}>
     <Input
       value={inputNameEditing.name}
@@ -31,6 +32,12 @@ const EditingPage = ({
         addClass={style.inputSentence}
         height={`calc(${Math.ceil(value.text.length / 55) * 1.5}em + 2em`}
       />))}
+      <Button
+        theme={"blue"}
+        onClick={addNewSentence}
+        content={"+"}
+        width={"50%"}
+      />
     </ul>
     <div className={style.operations}>
       <Button

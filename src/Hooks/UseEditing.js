@@ -39,11 +39,18 @@ const UseEditing = (setNewLocation, splitText, location) => {
     })
   }
 
+  const addNewSentence = () => {
+    setInputSentences(prevSentence => [...prevSentence, {
+      key: prevSentence.length,
+      text: ""
+    }])
+  }
+
   return ({
     inputNameEditing: {name: inputName, update: changeName},
     editingSentence: {array: inputSentences, update: changeSentence},
     confirmEditing,
-
+    addNewSentence
   })
 }
 export default UseEditing

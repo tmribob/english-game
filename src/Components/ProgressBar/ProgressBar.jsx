@@ -2,7 +2,7 @@ import style from "./ProgressBar.module.css";
 
 const ProgressBar = ({progress, changeSentence, currentIndex}) => {
   return (<ul className={style.progressBar}>
-    {progress && progress.map((value, index) => (<div
+    {progress.length > 0 && progress.map((value, index) => (<div
       className={style.divSquare}
       key={index}
     >

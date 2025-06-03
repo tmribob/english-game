@@ -24,9 +24,11 @@ import UseMyNavigation from "./Hooks/UseMyNavigation";
 
 const App = () => {
   const {location, setNewLocation, header} = UseMyNavigation();
+
   const {
     notification, showNotification
   } = UseNotification();
+
   const {
     buttons,
     spans,
@@ -38,21 +40,31 @@ const App = () => {
     changeSentence,
     currentIndex
   } = UsePlay(showNotification, setNewLocation, location);
+
   const {
     chooseText, texts, addText, delText, editText
   } = UseManageTexts(showNotification, setNewLocation, location);
+
   const {
     inputText,
     inputName,
     confirmText, cancel, splitText
   } = UseAddText(setNewLocation, showNotification);
+
   const {
     inputNameEditing,
     editingSentence,
     confirmEditing,
     addNewSentence
   } = UseEditing(setNewLocation, splitText, location);
-  const {mistakes} = useFinale(location);
+
+  const {
+    mistakes,
+    progressEnd,
+    currentIndexEnd,
+    changeSentenceEnd
+  } = useFinale(location);
+
   return (<>
     <Notification
       isVisible={notification.isVisible}
@@ -116,6 +128,9 @@ const App = () => {
         element={<EndPage
           goHome={goHome}
           mistakes={mistakes}
+          currentIndexEnd={currentIndexEnd}
+          changeSentenceEnd={changeSentenceEnd}
+          progressEnd={progressEnd}
         />}
       />
     </Routes>

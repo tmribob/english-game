@@ -28,6 +28,7 @@ const UsePlay = (showNotification, setNewLocation, location) => {
       }))));
     setSpans(currentText.map(() => []));
     setProgress(currentText.map(() => "unfinished"));
+    setHistory(currentText.map(() => []))
     UseLocalStorage.save('currentText', {currentText, shuffledText})
   }
 
@@ -62,26 +63,29 @@ const UsePlay = (showNotification, setNewLocation, location) => {
       ...span,
       isRight: span.word === text[currentIndex][indexSpan]
     }));
-    setHistory(prevSentence => [...prevSentence, colorizedSpans]);
+    const newHistory = history.map((sentence, indexSentence) =>
+      indexSentence !== currentIndex ? sentence : [...sentence, colorizedSpans]
+    )
+    setHistory(newHistory);
+    if (currentIndex === text.length - 1) {
+      setNewLocation('/end', {
+          mistakes: newHistory
+        }
+      );
+      dismantling();
+      return;
+    }
     setSpans(prevSpans =>
       prevSpans.map((sentence, indexSentence) =>
         indexSentence === currentIndex ? colorizedSpans : sentence));
-    if (colorizedSpans.some(span => span.color === "red")) {
+    if (colorizedSpans.some(span => !span.isRight)) {
       showNotification(`You made mistakes`);
       return;
     }
     setProgress(prevProgress =>
       prevProgress.map((status, indexStatus) =>
         indexStatus === currentIndex ? "finished" : status));
-    if (currentIndex === text.length - 1) {
-      setNewLocation('/end', {
-          mistakes: history
-        }
-      );
-      dismantling();
-    } else {
-      setCurrentIndex(prevIndex => prevIndex + 1);
-    }
+    setCurrentIndex(prevIndex => prevIndex + 1);
   }
 
   const changeSentence = (NewIndex) => {

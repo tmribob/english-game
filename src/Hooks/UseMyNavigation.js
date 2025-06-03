@@ -24,7 +24,7 @@ const UseMyNavigation = () => {
         setHeader('PLAYING TEXT');
         break;
       case '/end':
-        setHeader('THE END');
+        setHeader('RESULTS');
         break;
       default:
         setHeader('ERROR');

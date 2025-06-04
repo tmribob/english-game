@@ -1,13 +1,22 @@
 .mistakesList {
   display: flex;
-  gap: 10px;
-  padding: 3% 5%;
+  gap: 0.5em;
+  padding: 0.5em 2em;
   border-radius: 10px;
   justify-content: center;
   flex-wrap: wrap;
   min-height: 4vh;
   min-width: 50%;
 }
+
+.playField {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 
 .isTrue {
   color: #167316;

@@ -1,3 +1,18 @@
+.buttonList {
+  display: flex;
+  gap: 1em;
+  padding: 2em;
+  border-radius: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: var(--lightBlue);
+}
+
+.buttonList button:hover {
+  opacity: 0.9;
+  transform: scale(1.1, 1.1);
+}
+
 .isActive {
   text-decoration: line-through;
   opacity: 0.6;
@@ -8,23 +23,4 @@
 .isActive:hover {
   text-decoration: none;
   color: var(--white);
-}
-
-.buttonList {
-  display: flex;
-  gap: 10px;
-  padding: 3% 5%;
-  border-radius: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: var(--lightBlue);
-}
-
-.buttonList button {
-  width: 100%;
-}
-
-.buttonList button:hover {
-  opacity: 0.9;
-  transform: scale(1.1, 1.1);
 }

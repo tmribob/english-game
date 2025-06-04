@@ -10,7 +10,7 @@
   transition: all 0.3s ease-in-out;
   height: calc(100% - 1em);
   width: calc(100% - 1em);
-  font-size: 1.25em;
+  font-size: 1.25rem;
   border: 0;
   resize: none;
 }

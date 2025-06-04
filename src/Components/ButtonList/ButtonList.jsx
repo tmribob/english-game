@@ -2,7 +2,7 @@ import style from "./ButtonList.module.css";
 import Button from "../Button/Button";
 
 const ButtonList = ({array, changeButton}) => {
-  return (<div className={style.buttonList}>
+  return (<ul className={style.buttonList}>
     {array && array.map((value) => (<Button
       addClass={value.isActive ? style.isActive : ""}
       key={value.key}
@@ -11,6 +11,6 @@ const ButtonList = ({array, changeButton}) => {
       onClick={() => changeButton(value.key)}
       content={value.word}
     />))}
-  </div>);
+  </ul>);
 }
 export default ButtonList;

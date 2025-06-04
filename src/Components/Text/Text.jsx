@@ -7,7 +7,9 @@ const Text = ({name, chooseText, index, delText, editText}) => {
     className={`${style.text} `}
     onClick={() => chooseText(index)}
   >
-    {name}
+    <span>
+      {name}
+    </span>
     <div className={style.actions}>
       <Button
         theme={"lime"}

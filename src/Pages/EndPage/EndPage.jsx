@@ -9,7 +9,7 @@ const EndPage = ({
                    changeSentenceEnd,
                    currentIndexEnd
                  }) => {
-  return (<div>
+  return (<div className={style.playField}>
     <ProgressBar
       progress={progressEnd}
       changeSentence={changeSentenceEnd}
@@ -31,6 +31,7 @@ const EndPage = ({
       theme={"magenta"}
       onClick={goHome}
       content={"Home"}
+      width={"30%"}
     />
   </div>)
 }

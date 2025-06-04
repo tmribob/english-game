@@ -6,9 +6,11 @@ const UseMyNavigation = () => {
   const location = useLocation();
   const [header, setHeader] = useState('ENGLISH GAME');
 
-  const setNewLocation = (address, state = {}, replace = false) => {
+  const setNewLocation = (address, state = {}, replace = false, newHeader = undefined) => {
     navigate(address, {replace, state});
+    newHeader && setHeader(newHeader.toUpperCase());
   }
+
   useEffect(() => {
     switch (location.pathname) {
       case '/home':
@@ -21,7 +23,6 @@ const UseMyNavigation = () => {
         setHeader('EDITING TEXT');
         break;
       case '/play':
-        setHeader('PLAYING TEXT');
         break;
       case '/end':
         setHeader('RESULTS');

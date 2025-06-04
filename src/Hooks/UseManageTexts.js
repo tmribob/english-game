@@ -40,7 +40,7 @@ const UseManageTexts = (showNotification, setNewLocation, location) => {
     setNewLocation('/play', {
       currentText: texts[index].text,
       shuffledText: texts[index].text.map(sentence => shuffleArray(sentence))
-    });
+    }, false, texts[index].name);
   }
 
   const shuffleArray = (array) => {

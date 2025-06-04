@@ -54,8 +54,7 @@ const App = () => {
   const {
     inputNameEditing,
     editingSentence,
-    confirmEditing,
-    addNewSentence
+    confirmEditing
   } = UseEditing(setNewLocation, splitText, location);
 
   const {
@@ -120,7 +119,6 @@ const App = () => {
           cancel={cancel}
           changeSentence={editingSentence.update}
           confirmEditing={confirmEditing}
-          addNewSentence={addNewSentence}
         />}
       />
       <Route

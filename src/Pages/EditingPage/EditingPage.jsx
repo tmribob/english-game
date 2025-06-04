@@ -8,8 +8,7 @@ const EditingPage = ({
                        inputNameEditing,
                        cancel,
                        confirmEditing,
-                       changeSentence,
-                       addNewSentence
+                       changeSentence
                      }) => {
   return (<form className={style.formInput}>
     <Input
@@ -32,12 +31,6 @@ const EditingPage = ({
         addClass={style.inputSentence}
         height={`calc(${Math.ceil(value.text.length / 55) * 1.5}em + 2em`}
       />))}
-      <Button
-        theme={"blue"}
-        onClick={addNewSentence}
-        content={"+"}
-        width={"50%"}
-      />
     </ul>
     <div className={style.operations}>
       <Button

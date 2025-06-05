@@ -1,19 +1,66 @@
 import {useEffect, useState} from "react";
-import UseLocalStorage from "./UseLocalStorage";
 
-const UsePlay = (showNotification, setNewLocation, location) => {
+const usePlay = (showNotification, setNewLocation, location,saveItem,getItem,removeItem) => {
   const [text, setText] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [buttons, setButtons] = useState([]);
   const [spans, setSpans] = useState([]);
   const [progress, setProgress] = useState([]);
   const [history, setHistory] = useState([]);
+  const [seconds, setSeconds] = useState(0)
+
+  useEffect(() => {
+    let timer;
+    if (seconds !== null) {
+      timer = setTimeout(() => {
+        setSeconds(prev => prev + 1);
+        saver();
+      }, 1000);
+    }
+    return () => clearTimeout(timer);
+  }, [seconds]);
+
+  const saver = () => {
+    if (text.length > 0) {
+      saveItem('currentText', {
+        buttons,
+        spans,
+        progress,
+        history,
+        text,
+        currentIndex,
+        seconds
+      });
+    }
+  }
+  const setterState = () => {
+    const {
+      buttons,
+      progress,
+      currentIndex,
+      spans,
+      history,
+      text,
+      seconds
+    } = getItem('currentText');
+    setButtons(buttons);
+    setProgress(progress);
+    setCurrentIndex(currentIndex);
+    setSpans(spans);
+    setHistory(history);
+    setText(text);
+    setSeconds(seconds);
+  }
 
   useEffect(() => {
     if (location.pathname === "/play") {
-      if ("currentText" in location.state) {
-        const {currentText, shuffledText} = location.state;
-        UseLocalStorage.save('currentText', {
+      const continueSentence = getItem('currentText')
+      if (continueSentence !== false) {
+        console.log(continueSentence, continueSentence !== false);
+        setterState();
+      } else if ("newPlay" in location.state) {
+        const {currentText, shuffledText} = location.state.newPlay;
+        saveItem('currentText', {
           buttons: shuffledText.map((sentence, indexSentence) =>
             sentence.map((word, indexWord) => ({
               word,
@@ -24,24 +71,10 @@ const UsePlay = (showNotification, setNewLocation, location) => {
           progress: currentText.map(() => "unfinished"),
           text: currentText,
           history: currentText.map(() => []),
-          currentIndex: 0
+          currentIndex: 0,
+          seconds: 0
         });
-        setNewLocation(location.pathname, {}, true)
-      } else if (UseLocalStorage.get('currentText')) {
-        const {
-          buttons,
-          progress,
-          currentIndex,
-          spans,
-          history,
-          text
-        } = UseLocalStorage.get('currentText');
-        setButtons(buttons);
-        setProgress(progress);
-        setCurrentIndex(currentIndex);
-        setSpans(spans);
-        setHistory(history);
-        setText(text);
+        setterState();
       }
     }
   }, [location]);
@@ -98,14 +131,6 @@ const UsePlay = (showNotification, setNewLocation, location) => {
           indexStatus === currentIndex ? "finished" : status));
     }
     setCurrentIndex(NewIndex);
-    UseLocalStorage.save('currentText', {
-      buttons,
-      spans,
-      progress,
-      history,
-      text,
-      currentIndex
-    });
   };
 
   const clearSentence = () => {
@@ -135,6 +160,8 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     setSpans([]);
     setText([]);
     setHistory([]);
+    setSeconds(null);
+    removeItem('currentText');
   };
 
   return ({
@@ -146,8 +173,9 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     progress,
     goHome,
     changeSentence,
-    currentIndex
+    currentIndex,
+    seconds
   });
 };
 
-export default UsePlay;
+export default usePlay;

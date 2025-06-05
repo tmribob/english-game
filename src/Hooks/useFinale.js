@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const UseFinale = (location) => {
+const useFinale = (location) => {
   const [mistakes, setMistakes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState([]);
@@ -26,4 +26,4 @@ const UseFinale = (location) => {
   })
 }
 
-export default UseFinale
+export default useFinale

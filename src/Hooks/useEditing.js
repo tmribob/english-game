@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
+import splitText from "./splitText";
 
-const UseEditing = (setNewLocation, splitText, location) => {
+const useEditing = (setNewLocation, location) => {
   const [originalIndex, setOriginalIndex] = useState(null);
   const [inputName, setInputName] = useState('');
   const [inputSentences, setInputSentences] = useState([]);
@@ -37,7 +38,8 @@ const UseEditing = (setNewLocation, splitText, location) => {
   const confirmEditing = () => {
     setNewLocation('/home', {
       editedText: {
-        index: originalIndex, text: {
+        index: originalIndex,
+        text: {
           name: inputName,
           text: splitText(inputSentences.map(v => v.text).join('.'))
         }
@@ -51,4 +53,4 @@ const UseEditing = (setNewLocation, splitText, location) => {
     confirmEditing
   })
 }
-export default UseEditing
+export default useEditing

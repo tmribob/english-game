@@ -2,32 +2,38 @@ import "./App.css";
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import Notification from "./Components/Notification/Notification";
-import UseNotification from "./Hooks/UseNotification";
+import useNotification from "./Hooks/useNotification";
 
 import HomePage from "./Pages/HomePage/HomePage";
-import UseManageTexts from "./Hooks/UseManageTexts";
+import useManageTexts from "./Hooks/useManageTexts";
 
 import CreationPage from "./Pages/CreationPage/CreationPage";
-import UseAddText from "./Hooks/UseAddText";
+import useAddText from "./Hooks/useAddText";
 
 import PlayingPage from "./Pages/PlayingPage/PlayingPage";
-import UsePlay from "./Hooks/UsePlay";
+import usePlay from "./Hooks/usePlay";
 
 import EditingPage from "./Pages/EditingPage/EditingPage";
-import UseEditing from "./Hooks/UseEditing";
+import useEditing from "./Hooks/useEditing";
 
 import EndPage from "./Pages/EndPage/EndPage";
-import useFinale from "./Hooks/UseFinale";
+import useFinale from "./Hooks/useFinale";
 
 import Header from "./Components/Header/Header";
-import UseMyNavigation from "./Hooks/UseMyNavigation";
+import useMyNavigation from "./Hooks/useMyNavigation";
+import useLocalStorage from "./Hooks/useLocalStorage";
 
 const App = () => {
-  const {location, setNewLocation, header} = UseMyNavigation();
+  const {location, setNewLocation, header} = useMyNavigation();
+  const {
+    getItem,
+    removeItem,
+    saveItem
+  } = useLocalStorage();
 
   const {
     notification, showNotification
-  } = UseNotification();
+  } = useNotification();
 
   const {
     buttons,
@@ -38,24 +44,25 @@ const App = () => {
     progress,
     goHome,
     changeSentence,
-    currentIndex
-  } = UsePlay(showNotification, setNewLocation, location);
+    currentIndex,
+    seconds
+  } = usePlay(showNotification, setNewLocation, location, saveItem, getItem, removeItem);
 
   const {
     chooseText, texts, addText, delText, editText
-  } = UseManageTexts(showNotification, setNewLocation, location);
+  } = useManageTexts(showNotification, setNewLocation, location, getItem, saveItem);
 
   const {
     inputText,
     inputName,
-    confirmText, cancel, splitText
-  } = UseAddText(setNewLocation, showNotification);
+    confirmText, cancel
+  } = useAddText(setNewLocation, showNotification);
 
   const {
     inputNameEditing,
     editingSentence,
     confirmEditing
-  } = UseEditing(setNewLocation, splitText, location);
+  } = useEditing(setNewLocation, location);
 
   const {
     mistakes,
@@ -98,7 +105,7 @@ const App = () => {
         />}
       />
       <Route
-        path={'play'}
+        path={'/play'}
         element={<PlayingPage
           buttons={buttons}
           spans={spans}
@@ -109,6 +116,7 @@ const App = () => {
           goHome={goHome}
           currentIndex={currentIndex}
           changeSentence={changeSentence}
+          seconds={seconds}
         />}
       />
       <Route

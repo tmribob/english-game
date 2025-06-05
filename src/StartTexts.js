@@ -1,5 +1,6 @@
 const StartTexts = [{
   name: 'Global climate changes',
+  id: 0,
   text: [['Today', ',', 'our', 'planet', 'is', 'in', 'serious', 'danger'],
     ['Ozone', 'layer', 'depletion', ',', 'extinction', 'of', 'animals', 'and', 'plants', ',', 'air', 'and', 'water', 'pollution', ',', 'deforestation', 'are', 'the', 'problems', 'that', 'threaten', 'our', 'life', 'on', 'the', 'Earth'],
     ['But', 'many', 'of', 'the', 'environmental', 'organizations', 'have', 'identified', 'global', 'climate', 'changes', 'as', 'one', 'of', 'the', 'greatest', 'threats', 'to', 'the', 'planet'],
@@ -17,6 +18,7 @@ const StartTexts = [{
     ['But', 'we', 'should', 'always', 'remember', 'that', 'the', 'longer', 'action', 'is', 'delayed', ',', 'the', 'more', 'drastic', 'it', 'will', 'need', 'to', 'be']]
 }, {
   name: 'Moscow`s environmental problems',
+  id: 1,
   text: [['The', 'development', 'of', 'Moscow', 'is', 'associated', 'with', 'high', 'density', 'housing', ',', 'intensive', 'development', 'of', 'the', 'suburbs', ',', 'rapid', 'expansion', 'and', 'modernization', 'of', 'transport', 'networks', 'and', 'road', 'infrastructure', ',', 'etc'],
     ['All', 'this', 'contributes', 'to', 'the', 'huge', 'impact', 'on', 'the', 'city`s', 'natural', 'systems', 'causing', 'significant', 'changes', 'in', 'their', 'structure', 'and', 'the', 'emergence', 'of', 'hazards', 'detrimental', 'to', 'the', 'population'],
     ['The', 'extremely', 'high', 'population', 'density', 'leads', 'to', 'increased', 'consumption', 'of', 'resources', ',', 'high', 'emissions', 'of', 'pollutants', 'and', 'results', 'in', 'the', 'adverse', 'effects', 'of', 'electromagnetic', 'and', 'radiation', 'fields', 'in', 'these', 'areas'],
@@ -28,6 +30,7 @@ const StartTexts = [{
     ['Nowadays', ',', 'this', 'task', 'is', 'technically', 'and', 'technologically', 'feasible', 'and', 'could', 'be', 'achieved', 'by', 'the', 'use', 'of', 'renewable', 'energy', 'sources', 'and', 'non', '-', 'waste', 'technologies', ',', 'construction', 'of', 'waste', '-', 'recycling', 'plants', 'and', 'sewage', 'treatment', 'facilities', ',', 'as', 'well', 'as', 'transition', 'to', 'electric', 'transport']]
 }, {
   name: 'Technologically driven global challenges and risk',
+  id: 2,
   text: [['In', 'today`s', 'interconnected', 'world', ',', 'technological', 'advancements', 'have', 'brought', 'numerous', 'benefits', ',', 'especially', 'in', 'the', 'context', 'of', 'globalization'],
     ['Access', 'to', 'technology', 'is', 'now', 'crucial', 'for', 'participation', 'in', 'the', 'global', 'economy', ',', 'education', 'and', 'innovation'],
     ['However', ',', 'these', 'advancements', 'have', 'also', 'created', 'significant', 'challenges', 'that', 'impact', 'governance', ',', 'society', 'and', 'global', 'stability'],
@@ -44,6 +47,7 @@ const StartTexts = [{
     ['By', 'addressing', 'these', 'issues', ',', 'we', 'can', 'harness', 'the', 'potential', 'of', 'technological', 'advancements', 'while', 'mitigating', 'their', 'risks', 'to', 'ensure', 'a', 'safer', 'and', 'more', 'equitable', 'future', 'for', 'all']]
 }, {
   name: 'International scientific cooperation',
+  id: 3,
   text: [['International', 'scientific', 'cooperation', 'is', 'crucial', 'advancing', 'research', 'quality', ',', 'fostering', 'innovation', ',', 'and', 'addressing', 'global', 'challenges', 'that', 'no', 'single', 'country', 'can', 'solve', 'alone'],
     ['Scientists', 'from', 'different', 'nations', 'collaborate', 'to', 'find', 'solutions', 'to', 'problems', 'like', 'climate', 'change', ',', 'AI', 'risks', ',', 'and', 'space', 'exploration'],
     ['Collaboration', 'allows', 'for', 'the', 'sharing', 'of', 'knowledge', ',', 'resource', ',', 'and', 'facilities', ',', 'which', 'is', 'essential', 'for', 'complex', ',', 'interdisciplinary', 'projects'],

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import splitText from "./splitText";
 
 const useAddText = (setNewLocation, showNotification) => {
   const [inputText, setInputText] = useState("");

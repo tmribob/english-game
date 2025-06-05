@@ -3,6 +3,7 @@ import style from './PlayingPage.module.css'
 import ProgressBar from "../../Components/ProgressBar/ProgressBar";
 import ButtonList from "../../Components/ButtonList/ButtonList";
 import SpanList from "../../Components/SpanList/SpanList";
+import Notification from "../../Components/Notification/Notification";
 
 const PlayingPage = ({
                        buttons,
@@ -13,9 +14,16 @@ const PlayingPage = ({
                        progress,
                        goHome,
                        currentIndex,
-                       changeSentence
+                       changeSentence,
+                       seconds
                      }) => {
   return (<div className={style.playField}>
+
+    <Notification
+      isVisible={true}
+      context={seconds}
+      right={true}
+    />
     <ProgressBar
       progress={progress}
       changeSentence={changeSentence}

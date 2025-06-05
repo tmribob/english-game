@@ -23,7 +23,6 @@ import Header from "./Components/Header/Header";
 import useMyNavigation from "./Hooks/useMyNavigation";
 import useLocalStorage from "./Hooks/useLocalStorage";
 
-
 const App = () => {
   const {location, setNewLocation, header} = useMyNavigation();
   const {notification, showNotification} = useNotification();
@@ -38,12 +37,13 @@ const App = () => {
     progress,
     goHome,
     changeSentence,
-    currentIndex
+    currentIndex,
+    seconds
   } = usePlay(showNotification, setNewLocation, location, saveItem, getItem, removeItem);
 
   const {
     chooseText, texts, addText, delText, editText
-  } = useManageTexts(showNotification, setNewLocation, location, saveItem, getItem);
+  } = useManageTexts(showNotification, setNewLocation, location, getItem, saveItem);
 
   const {
     inputText,
@@ -98,7 +98,7 @@ const App = () => {
         />}
       />
       <Route
-        path={'play'}
+        path={'/play'}
         element={<PlayingPage
           buttons={buttons}
           spans={spans}
@@ -109,6 +109,7 @@ const App = () => {
           goHome={goHome}
           currentIndex={currentIndex}
           changeSentence={changeSentence}
+          seconds={seconds}
         />}
       />
       <Route

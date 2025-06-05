@@ -1,7 +1,7 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-const UseMyNavigation = () => {
+const useMyNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [header, setHeader] = useState('ENGLISH GAME');
@@ -36,4 +36,4 @@ const UseMyNavigation = () => {
   return {location, setNewLocation, header};
 }
 
-export default UseMyNavigation;
+export default useMyNavigation;

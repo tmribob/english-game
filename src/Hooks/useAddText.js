@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const UseAddText = (setNewLocation, showNotification) => {
+const useAddText = (setNewLocation, showNotification) => {
   const [inputText, setInputText] = useState("");
   const [inputName, setInputName] = useState("");
 
@@ -55,4 +55,4 @@ const UseAddText = (setNewLocation, showNotification) => {
   });
 };
 
-export default UseAddText;
+export default useAddText;

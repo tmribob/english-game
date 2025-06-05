@@ -2,32 +2,32 @@ import "./App.css";
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import Notification from "./Components/Notification/Notification";
-import UseNotification from "./Hooks/UseNotification";
+import useNotification from "./Hooks/useNotification";
 
 import HomePage from "./Pages/HomePage/HomePage";
-import UseManageTexts from "./Hooks/UseManageTexts";
+import useManageTexts from "./Hooks/useManageTexts";
 
 import CreationPage from "./Pages/CreationPage/CreationPage";
-import UseAddText from "./Hooks/UseAddText";
+import useAddText from "./Hooks/useAddText";
 
 import PlayingPage from "./Pages/PlayingPage/PlayingPage";
-import UsePlay from "./Hooks/UsePlay";
+import usePlay from "./Hooks/usePlay";
 
 import EditingPage from "./Pages/EditingPage/EditingPage";
-import UseEditing from "./Hooks/UseEditing";
+import useEditing from "./Hooks/useEditing";
 
 import EndPage from "./Pages/EndPage/EndPage";
-import useFinale from "./Hooks/UseFinale";
+import useFinale from "./Hooks/useFinale";
 
 import Header from "./Components/Header/Header";
-import UseMyNavigation from "./Hooks/UseMyNavigation";
-import UseLocalStorage from "./Hooks/UseLocalStorage";
+import useMyNavigation from "./Hooks/useMyNavigation";
+import useLocalStorage from "./Hooks/useLocalStorage";
 
 
 const App = () => {
-  const {location, setNewLocation, header} = UseMyNavigation();
-  const {notification, showNotification} = UseNotification();
-  const {getItem, removeItem, saveItem} = UseLocalStorage();
+  const {location, setNewLocation, header} = useMyNavigation();
+  const {notification, showNotification} = useNotification();
+  const {getItem, removeItem, saveItem} = useLocalStorage();
 
   const {
     buttons,
@@ -39,23 +39,23 @@ const App = () => {
     goHome,
     changeSentence,
     currentIndex
-  } = UsePlay(showNotification, setNewLocation, location, saveItem, getItem, removeItem);
+  } = usePlay(showNotification, setNewLocation, location, saveItem, getItem, removeItem);
 
   const {
     chooseText, texts, addText, delText, editText
-  } = UseManageTexts(showNotification, setNewLocation, location, saveItem, getItem);
+  } = useManageTexts(showNotification, setNewLocation, location, saveItem, getItem);
 
   const {
     inputText,
     inputName,
     confirmText, cancel, splitText
-  } = UseAddText(setNewLocation, showNotification);
+  } = useAddText(setNewLocation, showNotification);
 
   const {
     inputNameEditing,
     editingSentence,
     confirmEditing
-  } = UseEditing(setNewLocation, splitText, location);
+  } = useEditing(setNewLocation, splitText, location);
 
   const {
     mistakes,

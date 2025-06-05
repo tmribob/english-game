@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const UsePlay = (showNotification, setNewLocation, location, saveItem, getItem, removeItem) => {
+const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, removeItem) => {
   const [text, setText] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [buttons, setButtons] = useState([]);
@@ -150,4 +150,4 @@ const UsePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   });
 };
 
-export default UsePlay;
+export default usePlay;

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const UseEditing = (setNewLocation, splitText, location) => {
+const useEditing = (setNewLocation, splitText, location) => {
   const [originalIndex, setOriginalIndex] = useState(null);
   const [inputName, setInputName] = useState('');
   const [inputSentences, setInputSentences] = useState([]);
@@ -51,4 +51,4 @@ const UseEditing = (setNewLocation, splitText, location) => {
     confirmEditing
   })
 }
-export default UseEditing
+export default useEditing

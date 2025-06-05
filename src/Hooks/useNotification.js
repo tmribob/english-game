@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const UseNotification = () => {
+const useNotification = () => {
   const [notification, setNotification] = useState({
     text: "", isVisible: false
   });
@@ -23,4 +23,4 @@ const UseNotification = () => {
   return {notification, showNotification}
 };
 
-export default UseNotification
+export default useNotification

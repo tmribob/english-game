@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import StartTexts from "../StartTexts";
 
-const UseManageTexts = (showNotification, setNewLocation, location, saveItem, getItem) => {
+const useManageTexts = (showNotification, setNewLocation, location, saveItem, getItem) => {
   const [texts, setTexts] = useState([]);
 
   useEffect(() => {
@@ -75,4 +75,4 @@ const UseManageTexts = (showNotification, setNewLocation, location, saveItem, ge
   }
 }
 
-export default UseManageTexts;
+export default useManageTexts;

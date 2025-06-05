@@ -78,17 +78,16 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     setSpans(prevSpans =>
       prevSpans.map((sentence, indexSentence) =>
         indexSentence === currentIndex ? colorizedSpans : sentence));
-    if (colorizedSpans.some(span => !span.isRight)) {
-      showNotification(`You made mistakes`);
-      return;
-    }
-    setProgress(prevProgress =>
-      prevProgress.map((status, indexStatus) =>
-        indexStatus === currentIndex ? "finished" : status));
-    setCurrentIndex(prevIndex => prevIndex + 1);
+
+    changeSentence(currentIndex + 1);
   }
 
   const changeSentence = (NewIndex) => {
+    if (spans[currentIndex].length > 0) {
+      setProgress(prevProgress =>
+        prevProgress.map((status, indexStatus) =>
+          indexStatus === currentIndex ? "finished" : status));
+    }
     setCurrentIndex(NewIndex);
   }
 

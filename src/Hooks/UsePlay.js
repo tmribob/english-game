@@ -11,27 +11,40 @@ const UsePlay = (showNotification, setNewLocation, location) => {
 
   useEffect(() => {
     if (location.pathname === "/play") {
-      const {
-        currentText, shuffledText
-      } = location.state || UseLocalStorage.get('currentText');
-      start(currentText, shuffledText)
+      if ("currentText" in location.state) {
+        const {currentText, shuffledText} = location.state;
+        UseLocalStorage.save('currentText', {
+          buttons: shuffledText.map((sentence, indexSentence) =>
+            sentence.map((word, indexWord) => ({
+              word,
+              isActive: false,
+              key: `${indexSentence}-${word}-${indexWord}`
+            }))),
+          spans: currentText.map(() => []),
+          progress: currentText.map(() => "unfinished"),
+          text: currentText,
+          history: currentText.map(() => []),
+          currentIndex: 0
+        });
+        setNewLocation(location.pathname, {}, true)
+      } else if (UseLocalStorage.get('currentText')) {
+        const {
+          buttons,
+          progress,
+          currentIndex,
+          spans,
+          history,
+          text
+        } = UseLocalStorage.get('currentText');
+        setButtons(buttons);
+        setProgress(progress);
+        setCurrentIndex(currentIndex);
+        setSpans(spans);
+        setHistory(history);
+        setText(text);
+      }
     }
   }, [location]);
-
-
-  const start = (currentText, shuffledText) => {
-    setCurrentIndex(0);
-    setText(currentText);
-    setButtons(shuffledText.map((sentence, indexSentence) =>
-      sentence.map((word, indexWord) => ({
-        word, isActive: false, key: `${indexSentence}-${word}-${indexWord}`
-      }))));
-    setSpans(currentText.map(() => []));
-    setProgress(currentText.map(() => "unfinished"));
-    setHistory(currentText.map(() => []))
-    UseLocalStorage.save('currentText', {currentText, shuffledText})
-  }
-
 
   const changeButton = (key) => {
     setSpans(prevSpans =>
@@ -49,14 +62,14 @@ const UsePlay = (showNotification, setNewLocation, location) => {
           word: currentButton.word,
           key: currentButton.key
         }];
-      }))
+      }));
     setButtons(prevButtons =>
       prevButtons.map((sentence, indexSentence) =>
         indexSentence !== currentIndex ? sentence : sentence.map((button) =>
           button.key === key ? ({
             ...button, isActive: !button.isActive
           }) : button)));
-  }
+  };
 
   const submitSentence = () => {
     const colorizedSpans = spans[currentIndex].map((span, indexSpan) => ({
@@ -65,7 +78,7 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     }));
     const newHistory = history.map((sentence, indexSentence) =>
       indexSentence !== currentIndex ? sentence : [...sentence, colorizedSpans]
-    )
+    );
     setHistory(newHistory);
     if (currentIndex === text.length - 1) {
       setNewLocation('/end', {
@@ -75,12 +88,8 @@ const UsePlay = (showNotification, setNewLocation, location) => {
       dismantling();
       return;
     }
-    setSpans(prevSpans =>
-      prevSpans.map((sentence, indexSentence) =>
-        indexSentence === currentIndex ? colorizedSpans : sentence));
-
     changeSentence(currentIndex + 1);
-  }
+  };
 
   const changeSentence = (NewIndex) => {
     if (spans[currentIndex].length > 0) {
@@ -89,7 +98,15 @@ const UsePlay = (showNotification, setNewLocation, location) => {
           indexStatus === currentIndex ? "finished" : status));
     }
     setCurrentIndex(NewIndex);
-  }
+    UseLocalStorage.save('currentText', {
+      buttons,
+      spans,
+      progress,
+      history,
+      text,
+      currentIndex
+    });
+  };
 
   const clearSentence = () => {
     setSpans(prevSpans =>
@@ -103,12 +120,14 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     setProgress(prevProgress =>
       prevProgress.map((sentence, indexSentence) =>
         indexSentence === currentIndex ? "unfinished" : sentence));
+  };
 
-  }
   const goHome = () => {
     setNewLocation('/home');
     dismantling();
-  }
+  };
+
+
   const dismantling = () => {
     setProgress([]);
     setButtons([]);
@@ -116,7 +135,8 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     setSpans([]);
     setText([]);
     setHistory([]);
-  }
+  };
+
   return ({
     buttons,
     spans,
@@ -127,7 +147,7 @@ const UsePlay = (showNotification, setNewLocation, location) => {
     goHome,
     changeSentence,
     currentIndex
-  })
-}
+  });
+};
 
 export default UsePlay;

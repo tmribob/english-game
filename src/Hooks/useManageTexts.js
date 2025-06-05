@@ -22,28 +22,32 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
     if (location.pathname === "/home" && location.state) {
       if ("newText" in location.state) {
         setTexts(prevTexts =>
-          [...prevTexts, location.state.newText]
+          [...prevTexts, {...location.state.newText, id: maxId() + 1}]
         )
         setNewLocation(location.pathname, null, true)
       } else if ("editedText" in location.state) {
         const editedText = location.state.editedText
         setTexts(prevTexts => {
-          return prevTexts.map((text, indexText) =>
-            indexText === editedText.index ? editedText.text : text)
+          return prevTexts.map(text =>
+            text.id === editedText.id ? editedText.text : text)
         })
         setNewLocation(location.pathname, null, true)
       }
     }
   }, [location]);
 
+  const maxId = () => {
+    return Math.max(...texts.map(text => text.id))
+  }
+
   const addText = () => {
     setNewLocation('/addText');
   }
 
-  const delText = (index, event) => {
+  const delText = (id, event) => {
     event.stopPropagation();
     setTexts(prevText =>
-      prevText.filter((_, indexText) => index !== indexText)
+      prevText.filter((text) => text.id !== id)
     );
   }
 
@@ -66,7 +70,7 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
   const editText = (index, event) => {
     event.stopPropagation();
     setNewLocation('/editText', {
-      array: texts[index], index
+      array: texts[index]
     })
   }
 

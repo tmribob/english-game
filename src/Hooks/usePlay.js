@@ -56,7 +56,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   useEffect(() => {
     if (location.pathname === "/play") {
       const continueSentence = getItem('currentText')
-      if (continueSentence !== false) {
+      if (continueSentence ) {
         setterState();
       } else if ("newPlay" in location.state) {
         const {currentText, shuffledText} = location.state.newPlay;
@@ -110,7 +110,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
       isRight: span.word === text[currentIndex][indexSpan]
     }));
     const newHistory = history.map((sentence, indexSentence) =>
-      indexSentence !== currentIndex ? sentence : [...sentence, colorizedSpans]
+      indexSentence !== currentIndex ? sentence : [...sentence, {answer:colorizedSpans,time:seconds}]
     );
     setHistory(newHistory);
     if (currentIndex === text.length - 1) {

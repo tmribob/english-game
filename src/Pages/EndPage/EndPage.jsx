@@ -20,11 +20,12 @@ const EndPage = ({
         className={style.mistakesList}
         key={indexSentence}
       >
-        {sentence.map(span => (<span
+        {sentence.answer.map(span => (<span
           key={span.key}
           className={span.isRight ? style.isTrue : style.isFalse}
         >{span.word}
         </span>))}
+        {sentence.time}
       </div>))}
 
     <Button

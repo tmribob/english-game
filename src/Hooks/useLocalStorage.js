@@ -2,7 +2,7 @@ const useLocalStorage = () => {
   const getItem = (item) => {
     try {
       const texts = localStorage.getItem(item);
-      return texts ? JSON.parse(texts) : [];
+      return texts ? JSON.parse(texts) : null;
     } catch (error) {
       console.error('Ошибка чтения из localStorage:', error);
       return [];

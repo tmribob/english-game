@@ -43,7 +43,7 @@ const App = () => {
 
   const {
     chooseText, texts, addText, delText, editText
-  } = useManageTexts(showNotification, setNewLocation, location, getItem, saveItem);
+  } = useManageTexts(showNotification, setNewLocation, location, saveItem,getItem);
 
   const {
     inputText,

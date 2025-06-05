@@ -57,7 +57,6 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     if (location.pathname === "/play") {
       const continueSentence = getItem('currentText')
       if (continueSentence !== false) {
-        console.log(continueSentence, continueSentence !== false);
         setterState();
       } else if ("newPlay" in location.state) {
         const {currentText, shuffledText} = location.state.newPlay;

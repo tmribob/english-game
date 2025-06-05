@@ -19,16 +19,17 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
 
   useEffect(() => {
     const texts = getItem("texts");
-    if (texts.length > 0) {
+    if (texts && texts.length > 0) {
       setTexts(texts);
     } else {
-      saveItem("texts", StartTexts);
       setTexts(StartTexts);
     }
   }, []);
 
   useEffect(() => {
-    saveItem('texts', texts);
+    if (texts && texts.length > 0) {
+      saveItem('texts', texts);
+    }
   }, [texts]);
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
           text.id === editedText.id ? {
             ...text,
             name: editedText.name,
-            text: splitText(editedText.text)
+            text: splitText(editedText.text) || []
           } : text)
         );
         setNewLocation(location.pathname, null, true)
@@ -57,7 +58,7 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
   }, [location]);
 
   const maxId = () => {
-    return Math.max(...texts.map(text => text.id))
+    return texts.length > 0 ? Math.max(...texts.map(text => text.id)) : 0;
   }
 
   const addText = () => {
@@ -73,10 +74,11 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
 
   const chooseText = (id) => {
     const currentText = texts.find(text => text.id === id);
-    console.log(currentText);
     setNewLocation('/play', {
-      currentText: currentText.text,
-      shuffledText: currentText.text.map(sentence => shuffleArray(sentence))
+      newPlay: {
+        currentText: currentText.text,
+        shuffledText: currentText.text.map(sentence => shuffleArray(sentence))
+      }
     }, false, currentText.name);
   }
 

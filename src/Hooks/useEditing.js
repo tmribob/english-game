@@ -9,7 +9,6 @@ const useEditing = (setNewLocation, location) => {
     if (location.pathname === "/editText") {
       if (location.state) {
         const array = location.state.array;
-        console.log(array)
         setInputSentences([...array.text.map((v, i) => ({
           key: i, text: v.join(' ')
         })), {key: array.text.length, text: ""}]);

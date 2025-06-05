@@ -1,7 +1,5 @@
 .notification {
   position: absolute;
-  top: 2em;
-  left: 2em;
   background-color: var(--magent);
   border-radius: 1em;
   padding: 1em 1.5em;
@@ -12,4 +10,14 @@
 
 .notification.visibility {
   opacity: 1;
+}
+
+.left {
+  top: 2em;
+  left: 2em;
+}
+
+.right {
+  top: 2em;
+  right: 2em;
 }

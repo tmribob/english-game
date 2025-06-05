@@ -48,14 +48,14 @@ const App = () => {
   const {
     inputText,
     inputName,
-    confirmText, cancel, splitText
+    confirmText, cancel
   } = useAddText(setNewLocation, showNotification);
 
   const {
     inputNameEditing,
     editingSentence,
     confirmEditing
-  } = useEditing(setNewLocation, splitText, location);
+  } = useEditing(setNewLocation, location);
 
   const {
     mistakes,

@@ -5,11 +5,11 @@ import Text from "../../Components/Text/Text"
 
 const HomePage = ({texts, chooseText, addText, delText, editText}) => {
   return (<ul className={style.textList}>
-    {texts.map((value, index) => (<Text
-      key={index}
+    {texts.map(text => (<Text
+      key={text.id}
       chooseText={chooseText}
-      name={value.name}
-      index={index}
+      name={text.name}
+      id={text.id}
       delText={delText}
       editText={editText}
     />))}

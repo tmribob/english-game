@@ -1,6 +1,11 @@
 import {useEffect, useState} from "react";
 import StartTexts from "../StartTexts";
 
+const splitText = (text) => {
+  const sentences = text.replace(/([,:—–-])/g, ` $1 `).split(/[.!?]\s*/).filter(sentence => (/[a-zA-Zа-яА-ЯёЁ]/).test(sentence.trim()));
+  return sentences.map(sentence => sentence.replace(/^[^a-zA-Zа-яА-ЯёЁ]*/, '').match(/([а-яА-ЯёЁa-zA-Z0-9]+(?:['-`][а-яА-ЯёЁa-zA-Z0-9]+)*|[,-:])/g));
+};
+
 const useManageTexts = (showNotification, setNewLocation, location, saveItem, getItem) => {
   const [texts, setTexts] = useState([]);
 
@@ -16,21 +21,29 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
 
   useEffect(() => {
     saveItem('texts', texts);
+    console.log(texts);
   }, [texts]);
 
   useEffect(() => {
     if (location.pathname === "/home" && location.state) {
       if ("newText" in location.state) {
         setTexts(prevTexts =>
-          [...prevTexts, {...location.state.newText, id: maxId() + 1}]
+          [...prevTexts, {
+            name: location.state.newText.name,
+            id: maxId() + 1,
+            text: splitText(location.state.newText.text)
+          }]
         )
         setNewLocation(location.pathname, null, true)
       } else if ("editedText" in location.state) {
         const editedText = location.state.editedText
-        setTexts(prevTexts => {
-          return prevTexts.map(text =>
-            text.id === editedText.id ? editedText.text : text)
-        })
+        setTexts(prevTexts => prevTexts.map(text =>
+          text.id === editedText.id ? {
+            ...text,
+            name: editedText.name,
+            text: splitText(editedText.text)
+          } : text)
+        );
         setNewLocation(location.pathname, null, true)
       }
     }
@@ -51,11 +64,13 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
     );
   }
 
-  const chooseText = (index) => {
+  const chooseText = (id) => {
+    const currentText = texts.find(text => text.id === id);
+    console.log(currentText);
     setNewLocation('/play', {
-      currentText: texts[index].text,
-      shuffledText: texts[index].text.map(sentence => shuffleArray(sentence))
-    }, false, texts[index].name);
+      currentText: currentText.text,
+      shuffledText: currentText.text.map(sentence => shuffleArray(sentence))
+    }, false, currentText.name);
   }
 
   const shuffleArray = (array) => {
@@ -67,10 +82,11 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
     return newArray;
   }
 
-  const editText = (index, event) => {
+  const editText = (id, event) => {
     event.stopPropagation();
+    console.log(texts.find(text => text.id === id))
     setNewLocation('/editText', {
-      array: texts[index]
+      array: texts.find(text => text.id === id)
     })
   }
 

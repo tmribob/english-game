@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const useEditing = (setNewLocation, splitText, location) => {
+const useEditing = (setNewLocation, location) => {
   const [originalId, setOriginalId] = useState(null);
   const [inputName, setInputName] = useState('');
   const [inputSentences, setInputSentences] = useState([]);
@@ -8,11 +8,11 @@ const useEditing = (setNewLocation, splitText, location) => {
   useEffect(() => {
     if (location.pathname === "/editText") {
       if (location.state) {
-        const array = location.state;
+        const array = location.state.array;
+        console.log(array)
         setInputSentences([...array.text.map((v, i) => ({
           key: i, text: v.join(' ')
         })), {key: array.text.length, text: ""}]);
-
         setOriginalId(array.id);
         setInputName(array.name);
       }
@@ -37,11 +37,9 @@ const useEditing = (setNewLocation, splitText, location) => {
   const confirmEditing = () => {
     setNewLocation('/home', {
       editedText: {
-        text: {
-          name: inputName,
-          id:originalId,
-          text: splitText(inputSentences.map(v => v.text).join('.'))
-        }
+        name: inputName,
+        id: originalId,
+        text: inputSentences.map(v => v.text).join('.')
       }
     })
   }

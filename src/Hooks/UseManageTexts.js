@@ -1,28 +1,37 @@
 import {useEffect, useState} from "react";
-import UseLocalStorage from "./UseLocalStorage";
 import StartTexts from "../StartTexts";
 
-const UseManageTexts = (showNotification, setNewLocation, location) => {
+const UseManageTexts = (showNotification, setNewLocation, location, saveItem, getItem) => {
   const [texts, setTexts] = useState([]);
 
   useEffect(() => {
-    const texts = UseLocalStorage.get("texts");
+    const texts = getItem("texts");
     if (texts.length > 0) {
       setTexts(texts);
     } else {
-      UseLocalStorage.save("texts", StartTexts)
+      saveItem("texts", StartTexts);
       setTexts(StartTexts);
     }
   }, []);
 
   useEffect(() => {
+    saveItem('texts', texts);
+  }, [texts]);
+
+  useEffect(() => {
     if (location.pathname === "/home" && location.state) {
       if ("newText" in location.state) {
-        setTexts(UseLocalStorage.add('texts', location.state.newText));
-        setNewLocation(location.pathname, {}, true)
+        setTexts(prevTexts =>
+          [...prevTexts, location.state.newText]
+        )
+        setNewLocation(location.pathname, null, true)
       } else if ("editedText" in location.state) {
-        setTexts(UseLocalStorage.update("texts", location.state.editedText.index, location.state.editedText.text))
-        setNewLocation(location.pathname, {}, true)
+        const editedText = location.state.editedText
+        setTexts(prevTexts => {
+          return prevTexts.map((text, indexText) =>
+            indexText === editedText.index ? editedText.text : text)
+        })
+        setNewLocation(location.pathname, null, true)
       }
     }
   }, [location]);
@@ -33,7 +42,9 @@ const UseManageTexts = (showNotification, setNewLocation, location) => {
 
   const delText = (index, event) => {
     event.stopPropagation();
-    setTexts(UseLocalStorage.remove('texts', index));
+    setTexts(prevText =>
+      prevText.filter((_, indexText) => index !== indexText)
+    );
   }
 
   const chooseText = (index) => {

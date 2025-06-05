@@ -21,13 +21,13 @@ import useFinale from "./Hooks/UseFinale";
 
 import Header from "./Components/Header/Header";
 import UseMyNavigation from "./Hooks/UseMyNavigation";
+import UseLocalStorage from "./Hooks/UseLocalStorage";
+
 
 const App = () => {
   const {location, setNewLocation, header} = UseMyNavigation();
-
-  const {
-    notification, showNotification
-  } = UseNotification();
+  const {notification, showNotification} = UseNotification();
+  const {getItem, removeItem, saveItem} = UseLocalStorage();
 
   const {
     buttons,
@@ -39,11 +39,11 @@ const App = () => {
     goHome,
     changeSentence,
     currentIndex
-  } = UsePlay(showNotification, setNewLocation, location);
+  } = UsePlay(showNotification, setNewLocation, location, saveItem, getItem, removeItem);
 
   const {
     chooseText, texts, addText, delText, editText
-  } = UseManageTexts(showNotification, setNewLocation, location);
+  } = UseManageTexts(showNotification, setNewLocation, location, saveItem, getItem);
 
   const {
     inputText,

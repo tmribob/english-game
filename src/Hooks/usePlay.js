@@ -119,7 +119,10 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     setHistory(newHistory);
     if (currentIndex === text.length - 1) {
       setNewLocation('/end', {
-          mistakes: newHistory
+          mistakes: newHistory.map((sentence, index) => ({
+            original: text[index].join(' '),
+            history: sentence
+          }))
         }
       );
       dismantling();

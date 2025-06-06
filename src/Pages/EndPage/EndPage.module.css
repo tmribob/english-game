@@ -1,12 +1,10 @@
-.mistakesList {
+.answerList {
   display: flex;
   gap: 0.5em;
   padding: 0.5em 2em;
   border-radius: 10px;
   justify-content: center;
-  flex-wrap: wrap;
-  min-height: 4vh;
-  min-width: 50%;
+  min-height: 1em;
 }
 
 .playField {
@@ -17,11 +15,11 @@
   width: 100%;
 }
 
-
-.isTrue {
-  color: #167316;
+.original {
+  gap: 1em;
+  background-color: var(--blue);
+  padding: 1em 2.5em;
+  border-radius: 1em;
+  text-align: center;
 }
 
-.isFalse {
-  color: #FF0000;
-}

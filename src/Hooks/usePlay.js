@@ -56,7 +56,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   useEffect(() => {
     if (location.pathname === "/play") {
       const continueSentence = getItem('currentText')
-      if (continueSentence ) {
+      if (continueSentence) {
         setterState();
       } else if ("newPlay" in location.state) {
         const {currentText, shuffledText} = location.state.newPlay;
@@ -110,7 +110,10 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
       isRight: span.word === text[currentIndex][indexSpan]
     }));
     const newHistory = history.map((sentence, indexSentence) =>
-      indexSentence !== currentIndex ? sentence : [...sentence, {answer:colorizedSpans,time:seconds}]
+      indexSentence !== currentIndex ? sentence : [...sentence, {
+        answer: colorizedSpans,
+        time: seconds
+      }]
     );
     setHistory(newHistory);
     if (currentIndex === text.length - 1) {
@@ -121,15 +124,13 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
       dismantling();
       return;
     }
+    setProgress(prevProgress =>
+      prevProgress.map((status, indexStatus) =>
+        indexStatus === currentIndex ? "finished" : status));
     changeSentence(currentIndex + 1);
   };
 
   const changeSentence = (NewIndex) => {
-    if (spans[currentIndex].length > 0) {
-      setProgress(prevProgress =>
-        prevProgress.map((status, indexStatus) =>
-          indexStatus === currentIndex ? "finished" : status));
-    }
     setCurrentIndex(NewIndex);
   };
 
@@ -142,9 +143,11 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
         indexSentence !== currentIndex ? sentence : sentence.map((button) => ({
           ...button, isActive: false
         }))));
-    setProgress(prevProgress =>
-      prevProgress.map((sentence, indexSentence) =>
-        indexSentence === currentIndex ? "unfinished" : sentence));
+    if (progress[currentIndex] === "finished") {
+      setProgress(prevProgress =>
+        prevProgress.map((sentence, indexSentence) =>
+          indexSentence === currentIndex ? "unfinished" : sentence));
+    }
   };
 
   const goHome = () => {
@@ -167,14 +170,12 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   return ({
     buttons,
     spans,
+    operations: {clearSentence, submitSentence, goHome},
     changeButton,
-    clearSentence,
-    submitSentence,
     progress,
-    goHome,
     changeSentence,
     currentIndex,
-    seconds
+    seconds: `${Math.floor(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`
   });
 };
 

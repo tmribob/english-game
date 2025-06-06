@@ -9,10 +9,8 @@ const PlayingPage = ({
                        buttons,
                        spans,
                        changeButton,
-                       clearSentence,
-                       submitSentence,
                        progress,
-                       goHome,
+                       operations,
                        currentIndex,
                        changeSentence,
                        seconds
@@ -40,19 +38,19 @@ const PlayingPage = ({
     <div className={style.divOperations}>
       <Button
         theme={"magenta"}
-        onClick={clearSentence}
+        onClick={operations.clearSentence}
         content={"Clear"}
         width={"25%"}
       />
       <Button
         theme={"blue"}
-        onClick={goHome}
+        onClick={operations.goHome}
         content={"Home"}
         width={"25%"}
       />
       <Button
         theme={"lime"}
-        onClick={submitSentence}
+        onClick={operations.submitSentence}
         content={currentIndex === progress.length - 1 ? "Submit" : "Next"}
         width={"25%"}
       />

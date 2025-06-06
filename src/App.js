@@ -32,10 +32,8 @@ const App = () => {
     buttons,
     spans,
     changeButton,
-    clearSentence,
-    submitSentence,
     progress,
-    goHome,
+    operations,
     changeSentence,
     currentIndex,
     seconds
@@ -103,10 +101,8 @@ const App = () => {
           buttons={buttons}
           spans={spans}
           changeButton={changeButton}
-          clearSentence={clearSentence}
-          submitSentence={submitSentence}
           progress={progress}
-          goHome={goHome}
+          operations={operations}
           currentIndex={currentIndex}
           changeSentence={changeSentence}
           seconds={seconds}
@@ -125,7 +121,7 @@ const App = () => {
       <Route
         path={'/end'}
         element={<EndPage
-          goHome={goHome}
+          goHome={operations.goHome}
           mistakes={mistakes}
           currentIndexEnd={currentIndexEnd}
           changeSentenceEnd={changeSentenceEnd}

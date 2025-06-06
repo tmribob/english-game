@@ -5,14 +5,16 @@ import Text from "../../Components/Text/Text"
 
 const HomePage = ({texts, chooseText, addText, delText, editText}) => {
   return (<ul className={style.textList}>
-    {texts.map(text => (<Text
-      key={text.id}
-      chooseText={chooseText}
-      name={text.name}
-      id={text.id}
-      delText={delText}
-      editText={editText}
-    />))}
+    {texts.map(text => (
+      <Text
+        key={text.id}
+        chooseText={chooseText}
+        name={text.name}
+        id={text.id}
+        delText={delText}
+        editText={editText}
+      />
+    ))}
     <Button
       theme={"lime"}
       addClass={style.addText}

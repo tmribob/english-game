@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {timeConversion} from "../utils/timeСonversion";
 
 const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, removeItem) => {
   const [text, setText] = useState([]);
@@ -112,7 +113,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     const newHistory = history.map((sentence, indexSentence) =>
       indexSentence !== currentIndex ? sentence : [...sentence, {
         answer: colorizedSpans,
-        time: seconds
+        time: timeConversion(seconds)
       }]
     );
     setHistory(newHistory);
@@ -175,7 +176,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     progress,
     changeSentence,
     currentIndex,
-    seconds: `${Math.floor(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`
+    seconds: timeConversion(seconds)
   });
 };
 

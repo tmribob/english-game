@@ -1,15 +1,17 @@
 import style from "./Text.module.css"
 import Button from "../Button/Button";
 import {RiDeleteBin2Line, RiEdit2Line} from "react-icons/ri";
+import Span from "../Span/Span";
 
 const Text = ({name, chooseText, id, delText, editText}) => {
   return (<li
     className={`${style.text} `}
     onClick={() => chooseText(id)}
   >
-    <span>
-      {name}
-    </span>
+    <Span
+      content={name}
+      colorWhile={true}
+    />
     <div className={style.actions}>
       <Button
         theme={"lime"}

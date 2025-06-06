@@ -1,12 +1,14 @@
 import style from "./SpanList.module.css";
+import Span from "../Span/Span";
 
 const SpanList = ({array, delSpan}) => {
   return (<ul className={style.spanList}>
-    {array && array.map((value) => (<span
+    {array && array.map((value) => (<Span
       key={value.key}
       onClick={() => delSpan(value.key)}
-      className={`${style.span} ${"isRight" in value ? value.isRight ? style.isTrue : style.isFalse : ''}`}
-    >{value.word}</span>))}
+      isRight={"isRight" in value ? value.isRight : ''}
+      content={value.word}
+    />))}
   </ul>);
 }
 

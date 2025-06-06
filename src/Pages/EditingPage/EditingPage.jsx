@@ -29,7 +29,7 @@ const EditingPage = ({
         holder={"Enter sentence"}
         theme={"lightBlue"}
         addClass={style.inputSentence}
-        height={`calc(${Math.ceil(value.text.length / 55) * 1.5}em + 2em`}
+        height={`calc(${Math.ceil(value.text.length / 70) < 1 ? 1 : Math.ceil(value.text.length / 70) * 1.5}em + 2em`}
       />))}
     </ul>
     <div className={style.operations}>

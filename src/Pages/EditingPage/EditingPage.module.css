@@ -23,8 +23,7 @@
 .inputSentence {
   min-height: 1em;
   height: calc(100% - 2em);
-  padding: 1em;
+  padding: 1em 1.5em;
   overflow: hidden;
   resize: none;
 }
-

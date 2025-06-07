@@ -51,7 +51,7 @@ const PlayingPage = ({
       <Button
         theme={"lime"}
         onClick={operations.submitSentence}
-        content={currentIndex === progress.length - 1 ? "Submit" : "Next"}
+        content={currentIndex === progress.length - 1 ? "Finish" : "Submit"}
         width={"25%"}
       />
     </div>

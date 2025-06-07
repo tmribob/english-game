@@ -24,7 +24,10 @@ const EndPage = ({
         </div>
         <ul className={style.answerList}>
           {mistakes[currentIndexEnd].history.map((sentence, indexSentence) => (
-            <Answer key={indexSentence} sentence={sentence} />
+            <Answer
+              key={indexSentence}
+              sentence={sentence}
+            />
           ))}
         </ul>
       </> : <Span content={"Произошла Ошибка"}/>}

@@ -20,7 +20,8 @@ const HomePage = ({texts, chooseText, addText, delText, editText}) => {
       addClass={style.addText}
       onClick={addText}
       content={<RiMenuAddFill />}
-      width={"15%"}
+      width={"7.5em"}
+      margin={"0 2.25em 0"}
     />
   </ul>)
 }

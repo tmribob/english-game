@@ -23,7 +23,7 @@ const CreationPage = ({inputText, inputName, confirmText, cancel}) => {
       onChange={inputText.update}
       holder={"Enter text"}
       height={"50vh"}
-      padding={"1em"}
+      padding={"1em 1.5em"}
     />
     <div className={style.operations}>
       <Button

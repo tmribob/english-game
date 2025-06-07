@@ -18,14 +18,14 @@ const Text = ({name, chooseText, id, delText, editText}) => {
         onClick={(e) => editText(id, e)}
         content={<RiEdit2Line />}
         padding={"4px 0 0 0"}
-        width={"40%"}
+        width={"2em"}
       />
       <Button
         theme={"magenta"}
         onClick={(e) => delText(id, e)}
         content={<RiDeleteBin2Line />}
         padding={"4px 0 0 0"}
-        width={"40%"}
+        width={"2em"}
       />
     </div>
   </li>);

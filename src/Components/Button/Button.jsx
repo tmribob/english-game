@@ -8,11 +8,12 @@ const Button = ({
                   width = "100%",
                   height = "100%",
                   theme,
-                  padding
+                  padding,
+                  margin = "0"
                 }) => {
   return (<div
     className={style.divButton}
-    style={{width: width, height: height}}
+    style={{width: width, height: height, margin: margin}}
   >
     <button
       type={type}

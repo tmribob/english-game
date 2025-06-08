@@ -11,7 +11,6 @@ const PlayingPage = ({
                        changeButton,
                        progress,
                        operations,
-                       currentIndex,
                        changeSentence,
                        seconds
                      }) => {
@@ -23,16 +22,16 @@ const PlayingPage = ({
       right={true}
     />
     <ProgressBar
-      progress={progress}
+      progress={progress.map(value =>
+        ({color: value.isCurrent ? "magenta" : value.isSubmitted ? "lime" : ""}))}
       changeSentence={changeSentence}
-      currentIndex={currentIndex}
     />
     <ButtonList
-      array={buttons[currentIndex]}
+      array={buttons}
       changeButton={changeButton}
     />
     <SpanList
-      array={spans[currentIndex]}
+      array={spans}
       delSpan={changeButton}
     />
     <div className={style.divOperations}>
@@ -51,7 +50,7 @@ const PlayingPage = ({
       <Button
         theme={"lime"}
         onClick={operations.submitSentence}
-        content={currentIndex === progress.length - 1 ? "Finish" : "Submit"}
+        content={progress.find((_, index) => index === progress.length - 1)?.isCurrent ? "Finish" : "Submit"}
         width={"25%"}
       />
     </div>

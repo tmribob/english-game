@@ -2,7 +2,12 @@
   background-color: var(--lightBlue);
   padding: 1em 2.5em;
   border-radius: 1em;
-  text-align: center;
+  flex-wrap: wrap;
   display: flex;
-  gap: 1em;
+  gap: 0.625em;
+  list-style: none;
+}
+
+.answer > *:last-child {
+  margin-left: auto;
 }

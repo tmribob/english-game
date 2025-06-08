@@ -17,7 +17,7 @@ import EditingPage from "./Pages/EditingPage/EditingPage";
 import useEditing from "./Hooks/useEditing";
 
 import EndPage from "./Pages/EndPage/EndPage";
-import useFinale from "./Hooks/useFinale";
+import useResults from "./Hooks/useResults";
 
 import Header from "./Components/Header/Header";
 import useMyNavigation from "./Hooks/useMyNavigation";
@@ -35,13 +35,12 @@ const App = () => {
     progress,
     operations,
     changeSentence,
-    currentIndex,
     seconds
   } = usePlay(showNotification, setNewLocation, location, saveItem, getItem, removeItem);
 
   const {
     chooseText, texts, addText, delText, editText
-  } = useManageTexts(showNotification, setNewLocation, location, saveItem,getItem);
+  } = useManageTexts(showNotification, setNewLocation, location, saveItem, getItem);
 
   const {
     inputText,
@@ -56,11 +55,11 @@ const App = () => {
   } = useEditing(setNewLocation, location);
 
   const {
-    mistakes,
+    answer,
+    originalSentence,
     progressEnd,
-    currentIndexEnd,
     changeSentenceEnd
-  } = useFinale(location);
+  } = useResults(location);
 
   return (<>
     <Notification
@@ -103,7 +102,6 @@ const App = () => {
           changeButton={changeButton}
           progress={progress}
           operations={operations}
-          currentIndex={currentIndex}
           changeSentence={changeSentence}
           seconds={seconds}
         />}
@@ -122,8 +120,8 @@ const App = () => {
         path={'/end'}
         element={<EndPage
           goHome={operations.goHome}
-          mistakes={mistakes}
-          currentIndexEnd={currentIndexEnd}
+          answer={answer}
+          originalSentence={originalSentence}
           changeSentenceEnd={changeSentenceEnd}
           progressEnd={progressEnd}
         />}

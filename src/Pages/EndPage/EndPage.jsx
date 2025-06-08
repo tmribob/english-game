@@ -6,31 +6,32 @@ import Span from "../../Components/Span/Span";
 
 const EndPage = ({
                    goHome,
-                   mistakes,
+                   answer,
+                   originalSentence,
                    progressEnd,
-                   changeSentenceEnd,
-                   currentIndexEnd
+                   changeSentenceEnd
                  }) => {
   return (<div className={style.playField}>
     <ProgressBar
-      progress={progressEnd}
+      progress={progressEnd.map(isRight =>
+        ({color: isRight ? "lime" : "magenta"}))}
       changeSentence={changeSentenceEnd}
-      currentIndex={currentIndexEnd}
     />
-    {mistakes.length > 0 ?
-      <>
-        <div className={style.original}>
-          <Span content={mistakes[currentIndexEnd].original} />
-        </div>
-        <ul className={style.answerList}>
-          {mistakes[currentIndexEnd].history.map((sentence, indexSentence) => (
-            <Answer
-              key={indexSentence}
-              sentence={sentence}
-            />
-          ))}
-        </ul>
-      </> : <Span content={"Произошла Ошибка"}/>}
+    {answer ? <>
+      <ul className={style.original}>
+        {originalSentence && originalSentence.map(span =>
+          (<li><Span
+            colorWhile={true}
+            content={span}
+          /></li>))}
+
+
+      </ul>
+      <Answer
+        sentence={answer.answer}
+        time={answer.time}
+      />
+    </> : "Error"}
     <Button
       theme={"magenta"}
       onClick={goHome}

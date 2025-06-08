@@ -1,12 +1,3 @@
-.answerList {
-  display: flex;
-  gap: 0.5em;
-  padding: 0.5em 2em;
-  border-radius: 10px;
-  justify-content: center;
-  min-height: 1em;
-}
-
 .playField {
   display: flex;
   gap: 2em;
@@ -16,10 +7,13 @@
 }
 
 .original {
-  gap: 1em;
   background-color: var(--blue);
   padding: 1em 2.5em;
   border-radius: 1em;
-  text-align: center;
+  /*font-weight: 500;*/
+  flex-wrap: wrap;
+  display: flex;
+  gap: 0.625em;
+  list-style: none;
 }
 

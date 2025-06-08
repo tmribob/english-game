@@ -26,16 +26,16 @@
   cursor: pointer;
 }
 
-.completed {
+.lime {
   border-color: var(--lime);
 }
 
-.current {
-  border-width: 0.3em;
+.magenta {
+  border-width: 0.375em;
   border-color: var(--magent);
 }
 
-.square:hover:not(.current) {
-  border-width: 6px;
+.square:hover:not(.magenta) {
+  border-width: 0.375em;
   border-color: var(--blue);
 }

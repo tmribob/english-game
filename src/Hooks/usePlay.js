@@ -7,8 +7,8 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   const [buttons, setButtons] = useState([]);
   const [spans, setSpans] = useState([]);
   const [progress, setProgress] = useState([]);
-  const [history, setHistory] = useState([]);
-  const [seconds, setSeconds] = useState(0)
+  const [seconds, setSeconds] = useState(0);
+  const [times, setTimes] = useState([]);
 
   useEffect(() => {
     let timer;
@@ -21,16 +21,24 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     return () => clearTimeout(timer);
   }, [seconds]);
 
+  useEffect(() => {
+    if (progress && progress.length > 0) {
+      setProgress(prevProgress =>
+        prevProgress.map((status, indexStatus) =>
+          ({...status, isCurrent: indexStatus === currentIndex})))
+    }
+  }, [currentIndex]);
+
   const saver = () => {
     if (text.length > 0) {
       saveItem('currentText', {
         buttons,
         spans,
         progress,
-        history,
         text,
         currentIndex,
-        seconds
+        seconds,
+        times
       });
     }
   }
@@ -41,7 +49,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
       progress,
       currentIndex,
       spans,
-      history,
+      times,
       text,
       seconds
     } = getItem('currentText');
@@ -49,7 +57,7 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     setProgress(progress);
     setCurrentIndex(currentIndex);
     setSpans(spans);
-    setHistory(history);
+    setTimes(times)
     setText(text);
     setSeconds(seconds);
   }
@@ -69,9 +77,10 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
               key: `${indexSentence}-${word}-${indexWord}`
             }))),
           spans: currentText.map(() => []),
-          progress: currentText.map(() => "unfinished"),
+          progress: currentText.map((_, indexSentence) =>
+            ({isSubmitted: false, isCurrent: indexSentence === 0})),
           text: currentText,
-          history: currentText.map(() => []),
+          times: currentText.map(() => 0),
           currentIndex: 0,
           seconds: 0
         });
@@ -106,23 +115,14 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   };
 
   const submitSentence = () => {
-    const colorizedSpans = spans[currentIndex].map((span, indexSpan) => ({
-      ...span,
-      isRight: span.word === text[currentIndex][indexSpan]
-    }));
-    const newHistory = history.map((sentence, indexSentence) =>
-      indexSentence !== currentIndex ? sentence : [...sentence, {
-        answer: colorizedSpans,
-        time: timeConversion(seconds)
-      }]
-    );
-    setHistory(newHistory);
+    setTimes(prevTimes =>
+      prevTimes.map((time, indexSentence) =>
+        indexSentence === currentIndex ? seconds : time));
     if (currentIndex === text.length - 1) {
       setNewLocation('/end', {
-          mistakes: newHistory.map((sentence, index) => ({
-            original: text[index].join(' '),
-            history: sentence
-          }))
+          originalText: text,
+          history: spans,
+          times: times
         }
       );
       dismantling();
@@ -130,7 +130,8 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     }
     setProgress(prevProgress =>
       prevProgress.map((status, indexStatus) =>
-        indexStatus === currentIndex ? "finished" : status));
+        indexStatus === currentIndex ? {...status, isSubmitted: true} : status
+      ))
     changeSentence(currentIndex + 1);
   };
 
@@ -147,10 +148,13 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
         indexSentence !== currentIndex ? sentence : sentence.map((button) => ({
           ...button, isActive: false
         }))));
-    if (progress[currentIndex] === "finished") {
+    if (progress[currentIndex].isSubmitted) {
       setProgress(prevProgress =>
         prevProgress.map((sentence, indexSentence) =>
-          indexSentence === currentIndex ? "unfinished" : sentence));
+          indexSentence === currentIndex ? {
+            ...sentence,
+            isSubmitted: false
+          } : sentence));
     }
   };
 
@@ -166,19 +170,18 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
     setCurrentIndex(0);
     setSpans([]);
     setText([]);
-    setHistory([]);
+    setText([])
     setSeconds(null);
     removeItem('currentText');
   };
 
   return ({
-    buttons,
-    spans,
+    buttons: buttons[currentIndex],
+    spans: spans[currentIndex],
     operations: {clearSentence, submitSentence, goHome},
     changeButton,
     progress,
     changeSentence,
-    currentIndex,
     seconds: timeConversion(seconds)
   });
 };

@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   min-height: 1em;
   font-size: 1.2rem;
+  list-style: none;
 }
 
 .spanList span:hover {

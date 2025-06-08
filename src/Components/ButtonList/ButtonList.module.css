@@ -6,6 +6,7 @@
   justify-content: center;
   flex-wrap: wrap;
   background-color: var(--lightBlue);
+  list-style: none;
 }
 
 .buttonList button:hover {

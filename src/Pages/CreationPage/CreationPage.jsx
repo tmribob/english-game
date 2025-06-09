@@ -12,7 +12,7 @@ const CreationPage = ({inputText, inputName, confirmText, cancel}) => {
       width={"60%"}
       height={"2.75em"}
       theme={"blue"}
-      name={"name"}
+      name={"title"}
     />
     <Input
       addClass={style.inputText}
@@ -24,6 +24,7 @@ const CreationPage = ({inputText, inputName, confirmText, cancel}) => {
       holder={"Enter text"}
       height={"50vh"}
       padding={"1em 1.5em"}
+      name={'text'}
     />
     <div className={style.operations}>
       <Button

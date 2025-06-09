@@ -20,7 +20,7 @@ const EndPage = ({
     {answer ? <>
       <ul className={style.original}>
         {originalSentence && originalSentence.map(span =>
-          (<li><Span
+          (<li key={span.key}><Span
             colorWhile={true}
             content={span}
           /></li>))}

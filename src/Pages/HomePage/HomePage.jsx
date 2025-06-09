@@ -15,14 +15,16 @@ const HomePage = ({texts, chooseText, addText, delText, editText}) => {
         editText={editText}
       />
     ))}
-    <Button
-      theme={"lime"}
-      addClass={style.addText}
-      onClick={addText}
-      content={<RiMenuAddFill />}
-      width={"7.5em"}
-      margin={"0 2.25em 0"}
-    />
+    <li key={'addText'}>
+      <Button
+        theme={"lime"}
+        addClass={style.addText}
+        onClick={addText}
+        content={<RiMenuAddFill />}
+        width={"7.5em"}
+        margin={"0 2.25em 0"}
+      />
+    </li>
   </ul>)
 }
 

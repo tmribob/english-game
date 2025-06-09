@@ -19,6 +19,7 @@ const EditingPage = ({
       width={"60%"}
       height={"2.75em"}
       theme={"blue"}
+      name={'name'}
     />
     <ul className={style.sentences}>
       {editingSentence && editingSentence.map((value) => (<Input
@@ -29,6 +30,7 @@ const EditingPage = ({
         holder={"Enter sentence"}
         theme={"lightBlue"}
         addClass={style.inputSentence}
+        name={'text'}
         height={`calc(${Math.ceil(value.text.length / 70) < 1 ? 1 : Math.ceil(value.text.length / 70) * 1.5}em + 2em`}
       />))}
     </ul>

@@ -115,19 +115,19 @@ const usePlay = (showNotification, setNewLocation, location, saveItem, getItem, 
   };
 
   const submitSentence = () => {
-    setTimes(prevTimes =>
-      prevTimes.map((time, indexSentence) =>
-        indexSentence === currentIndex ? seconds : time));
+    const newTime = times.map((time, indexSentence) =>
+      indexSentence === currentIndex ? seconds : time)
     if (currentIndex === text.length - 1) {
       setNewLocation('/end', {
           originalText: text,
           history: spans,
-          times: times
+          times: newTime
         }
       );
       dismantling();
       return;
     }
+    setTimes(newTime);
     setProgress(prevProgress =>
       prevProgress.map((status, indexStatus) =>
         indexStatus === currentIndex ? {...status, isSubmitted: true} : status

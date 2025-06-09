@@ -13,8 +13,8 @@ const EndPage = ({
                  }) => {
   return (<div className={style.playField}>
     <ProgressBar
-      progress={progressEnd.map(isRight =>
-        ({color: isRight ? "lime" : "magenta"}))}
+      progress={progressEnd.map(counterMistakes =>
+        ({mistakes: counterMistakes}))}
       changeSentence={changeSentenceEnd}
     />
     {answer ? <>

@@ -6,12 +6,8 @@ export const accuracyAnswer = (originalText, answerText) => {
         isRight: span.word === originalText[indexSentence][indexSpan]
       });
     }));
-  const progress = originalText.map((sentence, indexSentence) => {
-    if (sentence.length === newAnswer[indexSentence].length) {
-      return newAnswer[indexSentence].every(span => span.isRight)
-    } else {
-      return false;
-    }
-  });
+  const progress = newAnswer.map((sentence, indexSentence) =>
+    1 - sentence.filter(span => span.isRight).length / originalText[indexSentence].length
+  );
   return [newAnswer, progress]
 }

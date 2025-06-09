@@ -9,7 +9,8 @@ const ProgressBar = ({progress, changeSentence}) => {
           key={index}
         >
           <div
-            className={`${style.square} ${value.color==="magenta" ? style.magenta : value.color==="lime" ? style.lime : ""}`}
+            className={`${style.square} ${value.color === "magenta" ? style.magenta : value.color === "lime" ? style.lime : ""}`}
+            style={value.mistakes !== undefined ? {borderColor: `hsl(${120 * (1 - value.mistakes)}, 100%, 50%)`} : {}}
             onClick={() => changeSentence(index)}
           >
             {index + 1}

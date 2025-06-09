@@ -15,31 +15,25 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
   }, []);
 
   useEffect(() => {
-    if (texts && texts.length > 0) {
-      saveItem('texts', texts);
-    }
-  }, [texts]);
-
-  useEffect(() => {
     if (location.pathname === "/home" && location.state) {
       if ("newText" in location.state) {
-        setTexts(prevTexts =>
-          [...prevTexts, {
-            name: location.state.newText.name,
-            id: maxId() + 1,
-            text: splitText(location.state.newText.text)
-          }]
-        )
+        const newTexts = [...texts, {
+          name: location.state.newText.name,
+          id: maxId() + 1,
+          text: splitText(location.state.newText.text)
+        }]
+        setTexts(newTexts)
+        saveItem('texts', newTexts);
         setNewLocation(location.pathname, null, true)
       } else if ("editedText" in location.state) {
         const editedText = location.state.editedText
-        setTexts(prevTexts => prevTexts.map(text =>
-          text.id === editedText.id ? {
-            ...text,
-            name: editedText.name,
-            text: splitText(editedText.text) || []
-          } : text)
-        );
+        const newTexts = texts.map(text => text.id === editedText.id ? {
+          ...text,
+          name: editedText.name,
+          text: splitText(editedText.text) || []
+        } : text)
+        setTexts(newTexts);
+        saveItem('texts', newTexts);
         setNewLocation(location.pathname, null, true)
       }
     }
@@ -55,9 +49,9 @@ const useManageTexts = (showNotification, setNewLocation, location, saveItem, ge
 
   const delText = (id, event) => {
     event.stopPropagation();
-    setTexts(prevText =>
-      prevText.filter((text) => text.id !== id)
-    );
+    const newTexts = texts.filter(text => text.id !== id)
+    setTexts(newTexts);
+    saveItem('texts', newTexts);
   }
 
   const chooseText = (id) => {
